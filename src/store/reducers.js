@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
 import tarbarReducer from '../pages/custom-tab-bar/store/slice'
-
+import demo from './demo'
 import userReducer from './userStore'
 import localReducer from './locationStore'
 
@@ -13,6 +13,7 @@ const reducers = {
     tabbar: tarbarReducer,
     userStore: userReducer,
     localStore: localReducer,
+    demo: demo,
 }
 
 const reducer = combineReducers(reducers)

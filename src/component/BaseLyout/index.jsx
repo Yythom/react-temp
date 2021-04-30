@@ -29,6 +29,7 @@ function _Layout(props) {
     return (
         <div className='layout animate__fadeIn animate__animated'>
             <Header />
+            {/* <div className='header_title' style={{ position: 'static' }}></div> */}
             <Switch>
                 { // 路由组件
                     Object.values(router).map(e => {

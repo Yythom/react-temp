@@ -10,6 +10,7 @@ import { getLocal } from '../utils/uitls';
  */
 const initialState = {
     userInfo: getLocal('info') || {},
+    test: 0
 }
 /**
  * reducers
@@ -18,6 +19,9 @@ const reducers = {
     clear: (state, action) => {
         state.userInfo = {};
         console.log(state, '---------------------- clear');
+    },
+    test: (state, action) => {
+        state.test = action.payload;
     }
 }
 
@@ -33,24 +37,36 @@ const userUpdata = createAsyncThunk(
 const changeTokenActionAsync = createAsyncThunk(
     'user/changeTokenActionAsync',
     async (data, thunkAPI) => { // data 微信获取到的信息
-
+        console.log(data, 'datadata');
 
         return data
     }
 )
 
 /**
- * 其它reducers，异步及其公共recuders
  * @param {*} builder 
+ * 监听异步完成处理state
  */
-const extraReducers = builder => {
-    builder.addCase(changeTokenActionAsync.fulfilled, (state, action) => {
+const extraReducers = {
+    [changeTokenActionAsync.fulfilled](state, action) {
+        console.log(action.payload, 'payload');
         state.userInfo = action.payload
-    });
-    builder.addCase(userUpdata.fulfilled, (state, action) => {
+    },
+    [userUpdata.fulfilled](state, action) {
         state.userInfo = { ...action.payload }
-    })
+    },
 }
+
+// const extraReducers = builder => {
+//     builder.addCase(changeTokenActionAsync.fulfilled, (state, action) => {
+//         console.log(action.payload, 'payload');
+//         state.userInfo = action.payload
+//     });
+//     builder.addCase(userUpdata.fulfilled, (state, action) => {
+//         state.userInfo = { ...action.payload }
+//     })
+// }
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
