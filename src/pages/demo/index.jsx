@@ -19,9 +19,9 @@ const Index = () => {
 
     const handleClickAsync = async () => {
         getWxConfigs().then(res => {
-            console.log(res);
+            dispatch(testActions.testAsync(res))
         })
-        dispatch(testActions.testAsync({ a: 111 }))
+
 
     }
 
