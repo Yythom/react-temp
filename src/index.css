@@ -14,8 +14,7 @@ code {
 
 #root,
 body,
-html,
-.layout {
+html {
   width: 100%;
   height: 100%;
   /* overflow: hidden; */
@@ -23,6 +22,24 @@ html,
 
 .notive-wrap {
   z-index: 9999999;
+}
+
+.modal-button {
+  font-size: 1.4rem;
+  color: #0084ff !important;
+  /* color: #0073ff; */
+}
+
+.modal-button-wrap:before {
+  border-top: 1px solid rgb(245, 245, 245) !important;
+}
+
+.modal-button:before {
+  border-top: 1px solid rgb(245, 245, 245) !important;
+}
+
+.modal-button:nth-child(1)::before {
+  border-top: none !important;
 }
 
 .modal-mask {

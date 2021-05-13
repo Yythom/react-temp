@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import '@/assets/icon.css'
 import BaseLayout from '@/component/BaseLyout/index'
+import 'antd-mobile/dist/antd-mobile.css';
 
 function _App(props) {
     useEffect(() => {

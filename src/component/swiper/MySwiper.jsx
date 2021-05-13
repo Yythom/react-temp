@@ -22,7 +22,7 @@ function MySwiper({ list, setIndex }) {
                     spaceBetween={20}
                     centeredSlides={true}
                     autoplay={{
-                        "delay": 1000,
+                        "delay": 2400,
                         "disableOnInteraction": false
                     }}
                     pagination={{
@@ -38,7 +38,7 @@ function MySwiper({ list, setIndex }) {
                     // }} 
                     // navigation
                     className="mySwiper"
-                    onSlideChange={(e) => { setIndex(e.realIndex); }}
+                    onSlideChange={(e) => { if (typeof setIndex === 'function') setIndex(e.realIndex); }}
                 >
                     {
                         list.map((e, i) => {
