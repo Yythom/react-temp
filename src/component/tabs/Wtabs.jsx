@@ -10,6 +10,7 @@ const Wtabs = ({
     windowTabsLength = 6, // 左侧列表显示的tabs数量
 }) => {
 
+    const [index, setIndex] = useState(0)
     const _onChange = (title, i) => {
         if (typeof onChange === 'function') {
             onChange(i);
@@ -18,18 +19,21 @@ const Wtabs = ({
 
     return (
         <div className='vTabs-wrap' style={{ height }}>
-            <WhiteSpace />
             <Tabs
                 initialPage={'t2'}
                 onChange={(title, index) => {
                     _onChange(title, index)
+                    setIndex(index)
                 }}
                 tabs={list}
+                // swipeable={false}
+                destroyInactiveTab
                 renderTabBar={props => <Tabs.DefaultTabBar {...props} page={windowTabsLength} />}
             >
-                1231231
+                {
+                    children
+                }
             </Tabs>
-            <WhiteSpace />
         </div>
     )
 }
