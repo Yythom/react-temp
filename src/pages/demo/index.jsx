@@ -16,7 +16,7 @@ import { T } from 'react-toast-mobile'
 import './index.scss'
 import { t_confirm, t_alert, t_notice, t_progress } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
-import { Tabs } from 'antd-mobile'
+import { SwipeAction, Tabs } from 'antd-mobile'
 import Wtabs from '@/component/tabs/Wtabs'
 
 
@@ -75,7 +75,23 @@ const Index = () => {
             <div className='swiper_wrap'>
                 <MySwiper list={['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0199a155c4790f32f8755e6604d4d5.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=604e35751d08384c4891ca7ddf168a05', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Frms.zhubajie.com%2Fresource%2Fredirect%3Fkey%3Dtianpeng%2F2015-11%2F14%2Fproduct%2F5646e9d57392f.jpg&refer=http%3A%2F%2Frms.zhubajie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=8c4fbf45b63e5fc9850299676231625a', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013cfe5c1b446da80121df904624c3.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=577eeeae616121b118debea5ce7bc7dc'].map(e => <img src={e} alt='err' />)} />
             </div>
-
+            <div >
+                <SwipeAction
+                    style={{ backgroundColor: '#fff' }}
+                    autoClose
+                    right={[
+                        {
+                            text: 'Delete',
+                            onPress: () => console.log('delete'),
+                            style: { backgroundColor: '#F4333C', color: 'white' },
+                        },
+                    ]}
+                >
+                    <div className='square' style={{ height: '40px' }}>
+                        滑块
+                   </div>
+                </SwipeAction>
+            </div>
 
             <Vtabs height='250px'>children</Vtabs>
             <Wtabs >children</Wtabs>
