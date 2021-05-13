@@ -5,12 +5,11 @@ import { useEffect } from 'react'
 // import { setCookie } from './utils/utils'
 // import { message } from 'antd'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import '../src/assets/icon.css'
-import BaseLayout from '../src/component/BaseLyout/index'
+import '@/assets/icon.css'
+import BaseLayout from '@/component/BaseLyout/index'
 
 function _App(props) {
     useEffect(() => {
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

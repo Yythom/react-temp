@@ -1,12 +1,12 @@
-import Demo from '../pages/demo/index.jsx'
+import Demo from '@/pages/demo/index'
 
 
-let BaseUrl = '/hb';
+let BaseUrl = '/demo';
 
 let router = () => {
     return {
         demo: {
-            url: '/demo',
+            url: BaseUrl,
             desc: '主页',
             page: Demo
         },

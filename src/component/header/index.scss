@@ -8,14 +8,27 @@
     box-sizing: border-box;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding-left: 1rem;
+    padding: 0 1rem;
     font-size: 1.4rem;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(250, 250, 250);
 
-    svg,
-    span {
-        vertical-align: middle;
+    .left {
+        min-width: 6rem;
+        height: 80%;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+    }
+
+    .center {
+        font-weight: bold;
+        font-size: 1.6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
 }

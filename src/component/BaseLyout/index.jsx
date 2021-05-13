@@ -2,23 +2,22 @@
 import React from 'react';
 import './index.scss';
 import 'animate.css';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 //路由
 import router from '../../router/router';
 import { useEffect } from 'react';
-import Bar from '../../pages/custom-tab-bar/index'
+import Bar from '@/pages/custom-tab-bar/index'
 
 function _Layout(props) {
-    // const history = useHistory();
 
     useEffect(() => {
         console.log('layout loading');
         if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) {
-            console.log('wx');
+            localStorage.setItem('Browser', 'wx');
         } else if (navigator.userAgent.toLowerCase().indexOf('alipayclient') !== -1) {
-            // props.setBrowser('zfb');
+            localStorage.setItem('Browser', 'zfb');
         } else {
-            // props.setBrowser('other');
+            localStorage.setItem('Browser', 'other');
         }
     }, [])
 

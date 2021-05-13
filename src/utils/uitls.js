@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
 import { formatSeconds } from './format'
 import dayjs from 'dayjs'
@@ -38,13 +39,12 @@ export function debounce(func, threshold = 500, immediate = false) {
 
 export function throttle(fn, wait = 500, isImmediate = false) {
     var flag = true;
-    var timer = null;
     if (isImmediate) {
         return function () {
             if (flag) {
                 fn.apply(this, arguments);
                 flag = false;
-                timer = setTimeout(() => {
+                setTimeout(() => {
                     flag = true
                 }, wait)
             }
@@ -53,7 +53,7 @@ export function throttle(fn, wait = 500, isImmediate = false) {
     return function () {
         if (flag == true) {
             flag = false
-            var timer = setTimeout(() => {
+            setTimeout(() => {
                 fn.apply(this, arguments)
                 flag = true
             }, wait)
@@ -169,17 +169,15 @@ export function clearCookie(name) {
 export function goMap(desc, lat, lng) {
     let isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1; //android终端
     let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-
-    console.log(navigator.userAgent);
-    // if (isiOS) {
-    //     window.location.href = `maps://?saddr=&daddr=${desc}`
-    // }
-    // if (isAndroid) {
+    if (isiOS) {
+        // window.location.href = `maps://?saddr=&daddr=${desc}`
+    }
+    if (isAndroid) {
+    }
     let map = {
         marker: `coord:${lat},${lng}`
     }
     window.location.href = `https://apis.map.qq.com/tools/poimarker?type=0&marker=${map.marker}&key=4I7BZ-HIS3P-ELWD3-L2R4G-MOYBJ-OLBXZ&referer=hb-h5`
-    // }
 }
 
 export async function getLal(address) {

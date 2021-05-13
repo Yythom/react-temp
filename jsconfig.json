@@ -2,8 +2,8 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/components/*": [
-                "./src/components/*"
+            "@/component/*": [
+                "./src/component/*"
             ],
             "@/common/*": [
                 "./src/common/*"
@@ -13,6 +13,9 @@
             ],
             "@/http/*": [
                 "./src/http/*"
+            ],
+            "@/pages/*": [
+                "./src/pages/*"
             ],
             "@/subpages/*": [
                 "./src/subpages/*"
@@ -25,8 +28,7 @@
             ],
             "@/services/*": [
                 "./src/services/*"
-            ],
+            ]
         }
     }
 }
-// "appid": "wxfb24f05e0eb531a2",
