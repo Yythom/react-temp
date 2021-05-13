@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/components/*": [
+                "./src/components/*"
+            ],
+            "@/common/*": [
+                "./src/common/*"
+            ],
+            "@/utils/*": [
+                "./src/utils/*"
+            ],
+            "@/http/*": [
+                "./src/http/*"
+            ],
+            "@/subpages/*": [
+                "./src/subpages/*"
+            ],
+            "@/store/*": [
+                "./src/store/*"
+            ],
+            "@/assets/*": [
+                "./src/assets/*"
+            ],
+            "@/services/*": [
+                "./src/services/*"
+            ],
+        }
+    }
+}
+// "appid": "wxfb24f05e0eb531a2",

@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { actions } from './store/slice'
 import './index.scss'
 
-
 const bar_height = 60;
 export default memo(() => {
     const dispatch = useDispatch();
@@ -36,7 +35,7 @@ export default memo(() => {
     }
 
     return (
-        <div className='tabbar-wrap' style={{ height: bar_height * 2 + 'rpx', paddingBottom: `env(safe-area-inset-bottom)` }} >
+        <div className='tabbar-wrap' style={{ height: bar_height / 10 + 'rem', paddingBottom: `env(safe-area-inset-bottom)` }} >
             {
                 tabBars[0] && tabBars.map((item, index) => {
                     return (

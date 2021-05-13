@@ -1,9 +1,7 @@
 import request from '../http/index'
 
 
-
-
-export const getWxConfigs = async (data) => {
+const getWxConfigs = async (data) => {
     const result = await request({
         method: 'post',
         url: '/official/authorize',
@@ -11,3 +9,9 @@ export const getWxConfigs = async (data) => {
     })
     return result;
 }
+
+
+export {
+    getWxConfigs,
+}
+

@@ -1,5 +1,5 @@
 // 倒计时转化Fn 时间戳
-export function formatSeconds(value) {
+function formatSeconds(value) {
     if (value === 0) return null;
     let theTime = parseInt(value);// 秒
     let theTime1 = 0;// 分
@@ -47,17 +47,26 @@ export function formatSeconds(value) {
 }
 
 
-export function formatUrl() {
-    let iterator = new URLSearchParams(window.location.search).entries();
-    let _obj = {}
-    function Next(params) {
-        let a = params.next()
-        if (a.value) {
-            _obj[a.value[0]] = a.value[1]
-            Next(iterator)
+function formatUrl() {
+    if (window.location.search) {
+        let iterator = new URLSearchParams(window.location.search).entries();
+        let _obj = {}
+        function Next(params) {
+            let a = params.next()
+            if (a.value) {
+                _obj[a.value[0]] = a.value[1]
+                Next(iterator)
+            }
         }
-    }
-    Next(iterator);
+        Next(iterator);
+        return _obj
 
-    return _obj
+    }
+    return 'no search_url'
+}
+
+
+export {
+    formatSeconds,
+    formatUrl
 }

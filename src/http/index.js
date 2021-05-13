@@ -61,6 +61,7 @@ function request(config) {
 
 
             }
+            resolve(false);
         })
     })
 }

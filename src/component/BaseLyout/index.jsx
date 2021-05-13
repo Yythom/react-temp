@@ -7,7 +7,6 @@ import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import router from '../../router/router';
 import { useEffect } from 'react';
 import Bar from '../../pages/custom-tab-bar/index'
-import Header from '../header/Index';
 
 function _Layout(props) {
     // const history = useHistory();
@@ -28,7 +27,6 @@ function _Layout(props) {
 
     return (
         <div className='layout animate__fadeIn animate__animated'>
-            <Header />
             {/* <div className='header_title' style={{ position: 'static' }}></div> */}
             <Switch>
                 { // 路由组件
