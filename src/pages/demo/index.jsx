@@ -12,7 +12,6 @@ import { formatUrl } from '@/utils/format.js'
 import { getWxConfigs } from '@/services/index_api'
 import FloatBottom from '@/component/Float/FloatBottom'
 import MySwiper from '@/component/swiper/MySwiper'
-import { T } from 'react-toast-mobile'
 import { showToast, showLoading } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
 import Wtabs from '@/component/tabs/Wtabs'
@@ -30,7 +29,6 @@ const Index = () => {
     const dispatch = useDispatch();
     const demoStore = useSelector(state => state.demo, shallowEqual);
     useEffect(() => {
-        console.log(T);
         console.log(testActions);
         console.log(formatUrl());
     }, [])
