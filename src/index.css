@@ -20,6 +20,10 @@ html {
   /* overflow: hidden; */
 }
 
+.layout {
+  width: 100%;
+  height: 100%;
+}
 
 .notive-wrap {
   z-index: 9999999;
@@ -51,4 +55,15 @@ html {
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, .5);
+  animation: ans 300ms;
+}
+
+@keyframes ans {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
