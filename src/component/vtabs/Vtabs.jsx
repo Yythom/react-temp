@@ -1,41 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import './vtabs.scss'
-import { vtablist } from './data';
-import { Tabs, WhiteSpace } from 'antd-mobile';
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 const Vtabs = ({
-    list = vtablist, // 左侧列表
-    children, // 右侧渲染的内容
+    list = [], // 左侧列表
     onChange, // change事件
-    height = '200px', // vtab高度
-    windowTabsLength = 5, // 左侧列表显示的tabs数量
+    height = '100px', // vtab高度
+    TabItemHeight = 40,
+    style
+    // windowTabsLength = 5, // 左侧列表显示的tabs数量
 }) => {
-
+    useEffect(() => {
+        let res = document.querySelector('.custom-height').querySelectorAll('.za-tabs__tab')
+        let arr = [...res]
+        if (arr[0]) {
+            arr.forEach(e => {
+                e.style.height = TabItemHeight + 'px'
+            })
+        }
+    }, [])
     const [index, setIndex] = useState(0)
 
-    const _onChange = (title, i) => {
+    const _onChange = (i) => {
         if (typeof onChange === 'function') {
             onChange(i);
         }
     }
 
     return (
-        <div className='vTabs-wrap' style={{ height }}>
-            <WhiteSpace />
+        <div className='auto_tabs_wrap' style={{ height, ...style }}>
             <Tabs
-                height={100}
-                initialPage={'t2'}
-                onChange={(title, index) => {
-                    _onChange(title, index)
-                    setIndex(index)
+                // swipeable
+                scrollable
+                className="custom-height"
+                style={{ height }}
+                direction="vertical"
+                onChange={(i) => {
+                    _onChange(i);
+                    setIndex(i);
                 }}
-                tabs={vtablist}
-                tabBarPosition='left'
-                tabDirection='vertical'
-                renderTabBar={props => <Tabs.DefaultTabBar {...props} page={windowTabsLength} />}
             >
-                {children}
+                {
+                    list.map((e, i) => {
+                        return (
+                            <Panel title={e.title} key={'vtabs' + i} >
+                                <div className="content" key={i} style={{ height }}>
+                                    {e.content}
+                                </div>
+                            </Panel>
+
+                        )
+                    })
+                }
+
             </Tabs>
-            <WhiteSpace />
         </div>
     )
 }

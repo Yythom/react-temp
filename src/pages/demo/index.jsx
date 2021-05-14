@@ -13,12 +13,15 @@ import { getWxConfigs } from '@/services/index_api'
 import FloatBottom from '@/component/Float/FloatBottom'
 import MySwiper from '@/component/swiper/MySwiper'
 import { T } from 'react-toast-mobile'
-import './index.scss'
-import { t_confirm, t_alert, t_notice, t_progress } from '@/utils/Toast'
+import { showToast, showLoading } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
-import { Drawer, List, SwipeAction, Tabs } from 'antd-mobile'
 import Wtabs from '@/component/tabs/Wtabs'
-import Drop from './DropDwon'
+
+
+import { Button, Cell, Popup, SwipeAction } from 'zarm'
+
+import './index.scss'
+import Drop from '@/component/drop/DropDwon'
 
 
 
@@ -46,7 +49,7 @@ const Index = () => {
     const [drop, setDrop] = useState(false)
     const [drop1, setDrop1] = useState(false)
     return (
-        <div className='demo_wrap' style={{ paddingBottom: `env(safe-area-inset-bottom)` }} >
+        <div className='demo_wrap' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
 
             {/* coustom */}
@@ -60,47 +63,50 @@ const Index = () => {
             <div>
                 <h1>Toast</h1>
                 <div>
-                    <button onClick={() => { t_alert() }}>alert</button>
-                    <button onClick={() => {
-                        T.loading('hello world');
-                        setTimeout(() => {
-                            t_notice('密码错误')
-                        }, 2000);
-                    }}>loading</button>
-                    <button onClick={() => { t_confirm() }}>confirm</button>
-                    <button onClick={() => { t_notice() }}>notify</button>
-                    <button onClick={() => { t_progress('加载中') }}>t_progress</button>
-                    <button onClick={() => { T.loaded() }}>clear</button>
+                    <button onClick={() => { showToast.message('这是一个提示') }}>普通提示</button>
+                    <button onClick={() => { showToast.message('成功', 'success') }}>成功提示</button>
+                    <button onClick={() => { showToast.message('成功', 'error') }}>错误提示</button>
                 </div>
             </div>
-            <button onClick={() => { setShow(true); }}>float button</button>
-            <button onClick={() => { setShow(true); }}>float button</button>
-            <div className='swiper_wrap'>
-                <MySwiper list={['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0199a155c4790f32f8755e6604d4d5.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=604e35751d08384c4891ca7ddf168a05', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Frms.zhubajie.com%2Fresource%2Fredirect%3Fkey%3Dtianpeng%2F2015-11%2F14%2Fproduct%2F5646e9d57392f.jpg&refer=http%3A%2F%2Frms.zhubajie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=8c4fbf45b63e5fc9850299676231625a', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013cfe5c1b446da80121df904624c3.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=577eeeae616121b118debea5ce7bc7dc'].map(e => <img src={e} alt='err' />)} />
+            <div>
+                <h1>loading</h1>
+                <div>
+                    <button onClick={() => { showLoading('加载中') }}>普通提示</button>
+                </div>
             </div>
-            {/* <div>
-                <SwipeAction
-                    style={{ backgroundColor: '#fff' }}
-                    autoClose
-                    right={[
-                        {
-                            text: 'Delete',
-                            onPress: () => console.log('delete'),
-                            style: { backgroundColor: '#F4333C', color: 'white' },
-                        },
-                    ]}
-                >
-                    <div className='square' style={{ height: '40px' }}>
-                        滑块
-                   </div>
-                </SwipeAction>
-            </div> */}
 
-            {/* <Vtabs height='250px'>children</Vtabs>
-            <Wtabs >children</Wtabs> */}
-            <FloatBottom className='test__-' show={show} setShow={setShow} style={{ padding: '1.6rem 2rem' }}>
-                <div style={{ background: '#333', height: '300px', width: '100%' }}>111</div>
-            </FloatBottom>
+            {/* float */}
+            <div>
+                <h1>float</h1>
+                <div>
+                    <button onClick={() => { setShow(true); }}>下浮层</button>
+                    <FloatBottom className='test__-' show={show} setShow={setShow} style={{ padding: '1.6rem 2rem' }}>
+                        <div style={{ background: '#333', height: '300px', width: '100%' }}>111</div>
+                    </FloatBottom>
+                </div>
+            </div>
+
+            {/* swiper */}
+            <MySwiper height={200} list={['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0199a155c4790f32f8755e6604d4d5.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=604e35751d08384c4891ca7ddf168a05', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Frms.zhubajie.com%2Fresource%2Fredirect%3Fkey%3Dtianpeng%2F2015-11%2F14%2Fproduct%2F5646e9d57392f.jpg&refer=http%3A%2F%2Frms.zhubajie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=8c4fbf45b63e5fc9850299676231625a', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013cfe5c1b446da80121df904624c3.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=577eeeae616121b118debea5ce7bc7dc']} />
+
+            {/*  SwipeAction */}
+            <div>
+                <h1>滑块</h1>
+                <SwipeAction
+                    autoClose
+                    left={[
+                        <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
+                            左按钮1 </Button>,
+                    ]}
+                    right={[
+                        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
+                    ]}
+                    onOpen={() => console.log('open')}
+                    onClose={() => console.log('close')}
+                >
+                    <Cell style={{ marginBottom: '4px' }}>左右都能滑动（自动关闭）</Cell>
+                </SwipeAction>
+            </div>
 
             <h1>dropDown</h1>
             <div>
@@ -157,6 +163,44 @@ const Index = () => {
                     ]}
                 />
             </div>
+
+
+            <Vtabs
+                height='100px'
+                style={{ marginBottom: '4px' }}
+                TabItemHeight={60}
+                list={[
+                    {
+
+                        title: '标签1',
+                        content: <div>
+                            <span>111段字</span>
+                        </div>
+                    },
+                    {
+                        title: '标签2',
+                        content: <div>
+                            <span>222段字</span>
+                        </div>
+                    },
+                ]}></Vtabs>
+
+            <Wtabs height='200px' list={[
+                {
+                    title: '标签1',
+                    content: <div>
+                        <span>111段字</span>
+                    </div>
+                },
+                {
+                    title: '标签2',
+                    content: <div>
+                        <span>222段字</span>
+                    </div>
+                }
+            ]}></Wtabs>
+
+
 
         </div >
     )

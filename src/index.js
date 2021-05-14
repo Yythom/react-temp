@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import Toast from 'react-toast-mobile';
-import 'react-toast-mobile/lib/react-toast-mobile.css';
+import { ConfigProvider, Button } from 'zarm';
+import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
+import 'zarm/dist/zarm.css';
+
 
 ReactDOM.render(
-  <Provider store={store}><Toast /> <App /></Provider>
+  <Provider store={store}>
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
+  </Provider>
   ,
   document.getElementById('root')
 );

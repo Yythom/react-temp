@@ -1,38 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import './wtabs.scss'
-import { vtablist } from './data';
-import { Tabs, WhiteSpace } from 'antd-mobile';
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 const Wtabs = ({
-    list = vtablist, // 左侧列表
-    children, // 右侧渲染的内容
+    list = [], // 左侧列表
     onChange, // change事件
-    height = 200, // wtab高度
-    windowTabsLength = 6, // 左侧列表显示的tabs数量
+    height = '100px', // vtab高度
+    style
+    // windowTabsLength = 5, // 左侧列表显示的tabs数量
 }) => {
 
     const [index, setIndex] = useState(0)
-    const _onChange = (title, i) => {
+
+
+    const _onChange = (i) => {
         if (typeof onChange === 'function') {
             onChange(i);
         }
     }
 
     return (
-        <div className='vTabs-wrap' style={{ height }}>
+        <div className='auto_tabs_wrap' style={{ height, ...style }}>
             <Tabs
-                initialPage={'t2'}
-                onChange={(title, index) => {
-                    _onChange(title, index)
-                    setIndex(index)
+                // swipeable
+                scrollable
+                className="tabs"
+                style={{ height }}
+                onChange={(i) => {
+                    _onChange(i);
+                    setIndex(i);
                 }}
-                tabs={list}
-                // swipeable={false}
-                destroyInactiveTab
-                renderTabBar={props => <Tabs.DefaultTabBar {...props} page={windowTabsLength} />}
             >
                 {
-                    children
+                    list.map((e, i) => {
+                        return (
+                            <Panel title={e.title} key={'w_wtabs' + i}>
+                                <div className="content" style={{ height: `calc(${height} - 4.6rem)` }} >
+                                    {e.content}
+                                    {/* <div style={{ height: '300px', background: 'blue' }}></div> */}
+                                </div>
+                            </Panel>
+                        )
+                    })
                 }
+
             </Tabs>
         </div>
     )

@@ -7,49 +7,32 @@ import "swiper/components/navigation/navigation.min.css"
 import "./index.scss";
 
 
-// import Swiper core and required modules
-import SwiperCore, {
-    Autoplay, Pagination, Navigation
-} from 'swiper/core';
+import { Carousel } from "zarm";
 
 
-SwiperCore.use([Autoplay, Pagination, Navigation]);
-function MySwiper({ list, setIndex }) {
+function MySwiper({ height = 200, list = [] }) {
     return (
         <>
             {
-                list && list[0] && <Swiper
-                    spaceBetween={20}
-                    centeredSlides={true}
-                    autoplay={{
-                        "delay": 2400,
-                        "disableOnInteraction": false
-                    }}
-                    pagination={{
-                        "clickable": true
-                    }}
-                    // slidesPerView={0} // 一页展示块数
-                    // initialSlide={0} // 初始化展示 【index】
+                <Carousel
+                    autoPlay
                     loop
-                    // onSwiper={(swiper) => console.log(swiper)}
-                    // navigation={{
-                    //     nextEl: '.swiper-button-next',
-                    //     prevEl: '.swiper-button-prev',
-                    // }} 
-                    // navigation
-                    className="mySwiper"
-                    onSlideChange={(e) => { if (typeof setIndex === 'function') setIndex(e.realIndex); }}
+                    direction="left"
+                    height={height}
+                    autoPlayIntervalTime={5000}
+                    onChangeEnd={(index) => {
+                        // console.log(`onChangeEnd: ${index}`);
+                    }}
                 >
                     {
-                        list.map((e, i) => {
+                        list.map((item, i) => {
                             return (
-                                <SwiperSlide key={i}>
-                                    {e}
-                                </SwiperSlide>
-                            )
-                        })
-                    }
-                </Swiper>
+                                <div className="carousel__item__pic" key={+i}>
+                                    <img className='img' src={item} alt="" draggable={false} />
+                                </div>
+                            );
+                        })}
+                </Carousel>
             }
         </>
     )

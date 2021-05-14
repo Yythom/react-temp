@@ -2,12 +2,9 @@
 import React from 'react'
 //布局组件
 import { useEffect } from 'react'
-// import { setCookie } from './utils/utils'
-// import { message } from 'antd'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import '@/assets/icon.css'
 import BaseLayout from '@/component/BaseLyout/index'
-import 'antd-mobile/dist/antd-mobile.css';
 
 function _App(props) {
     useEffect(() => {

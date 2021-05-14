@@ -58,6 +58,25 @@ html {
   animation: ans 300ms;
 }
 
+.Toastbox {
+  .box-text {
+    margin-top: 0.4rem;
+  }
+}
+
+.loadingBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .box-text {
+    margin-top: 1rem;
+    color: #fff;
+    font-size: 1.3rem;
+  }
+}
+
 @keyframes ans {
   0% {
     opacity: 0;
