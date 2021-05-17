@@ -4,9 +4,9 @@ import "./index.scss";
 
 import { Carousel } from "zarm";
 
-function MySwiper({ height = '200px', list = [] }) {
+function MySwiper({ height = '200px', list = [], style }) {
     return (
-        <>
+        <div className='swiper_wrap' style={{ ...style }}>
             {
                 <Carousel
                     autoPlay
@@ -28,7 +28,7 @@ function MySwiper({ height = '200px', list = [] }) {
                     }
                 </Carousel>
             }
-        </>
+        </div>
     )
 }
 
