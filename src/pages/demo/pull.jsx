@@ -77,7 +77,7 @@ const PullBox = ({ isWindowBox = false, isTopBtn = false, reqParams = {}, reqApi
         // setLoading(loadingState);
 
         setTimeout(() => {
-            let loadingState = LOAD_STATE.failure;
+            let loadingState = LOAD_STATE.complete;
             // let loadingState = LOAD_STATE.success;
             // 成功？
             // setDataSource([...dataSource, 1, 2, 3, 4, 5, 6, 7,8]);

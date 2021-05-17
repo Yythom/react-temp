@@ -1,12 +1,13 @@
 import { ActivityIndicator, Icon, Loading, Toast } from "zarm";
 
 class showToast {
-    static message(msg = ' ', type = 'none', date = 2000) {
+    static message(msg = ' ', type = 'none', date = 2000, mask) {
+        Toast.hide();
         switch (type) {
             case 'none':
                 Toast.show({
                     content: msg,
-                    mask: true,
+                    mask,
                     stayTime: date
                 });
                 break;
@@ -16,7 +17,7 @@ class showToast {
                         <Icon className="box-icon" type="right" />
                         <div className="box-text">{msg}</div>
                     </div>,
-                    mask: true,
+                    mask,
                     stayTime: date
                 });
                 break;
@@ -26,7 +27,7 @@ class showToast {
                         <Icon className="box-icon" type="wrong" />
                         <div className="box-text">{msg}</div>
                     </div>,
-                    mask: true,
+                    mask,
                     stayTime: date
                 });
                 break;
