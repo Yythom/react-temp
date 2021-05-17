@@ -22,7 +22,16 @@ const LOAD_STATE = {
 
 
 
-const PullBox = ({ isWindowBox = false, isTopBtn = false, reqParams = {}, reqApi }) => {
+const PullBox = ({
+    isWindowBox = false,
+    isTopBtn = false,
+    reqParams = {},
+    reqApi,
+    maxHeight,
+    children
+}) => {
+
+
     const pullRef = useRef();
     const [bodyScroll, setBodyScroll] = useState(false);
     const [dataSource, setDataSource] = useState([]);
@@ -86,7 +95,7 @@ const PullBox = ({ isWindowBox = false, isTopBtn = false, reqParams = {}, reqApi
     };
 
 
-    const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight: 400 };
+    const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight };
 
     const scrollContainer = () => {
         return bodyScroll ? window : pullRef.current && pullRef.current.scrollContainer;
@@ -166,9 +175,7 @@ const PullBox = ({ isWindowBox = false, isTopBtn = false, reqParams = {}, reqApi
                     // },
                 }}
             >
-                {dataSource.map((e, i) => {
-                    return <Cell key={'list_pull_' + i}>{e}</Cell>
-                })}
+                {children}
             </Pull>
             <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>
                 <div

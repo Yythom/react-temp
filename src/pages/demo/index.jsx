@@ -220,7 +220,11 @@ const Index = () => {
             <div>
                 <h1>下拉刷新</h1>
             </div>
-            <PullBox isTopBtn isWindowBox={false} />
+            <PullBox isTopBtn isWindowBox={false} maxHeight={300}  >
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((e, i) => {
+                    return <Cell key={'list_pull_' + i}>{e}</Cell>
+                })}
+            </PullBox>
         </div >
     )
 }
