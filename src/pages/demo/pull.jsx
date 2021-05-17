@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react';
-import { Pull, Cell, Message, Icon, Button, ActivityIndicator, BackToTop } from 'zarm';
+import { Pull, Cell, BackToTop } from 'zarm';
 
 const REFRESH_STATE = {
     normal: 0, // 普通

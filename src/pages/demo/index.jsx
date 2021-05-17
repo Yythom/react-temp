@@ -17,11 +17,12 @@ import Vtabs from '@/component/vtabs/Vtabs'
 import Wtabs from '@/component/tabs/Wtabs'
 
 
-import { Button, Cell, Popup, SwipeAction } from 'zarm'
+import { Button, Cell, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
 import PullBox from './pull'
+import showModal from '@/utils/modal'
 
 
 
@@ -65,6 +66,18 @@ const Index = () => {
                     <button onClick={() => { showToast.message('这是一个提示') }}>普通提示</button>
                     <button onClick={() => { showToast.message('成功', 'success') }}>成功提示</button>
                     <button onClick={() => { showToast.message('成功', 'error') }}>错误提示</button>
+                </div>
+            </div>
+            <div>
+                <h1>modal</h1>
+                <div>
+                    <button onClick={() => { showModal.alert('alert', 'test') }}>普通提示Modal</button>
+                    <button onClick={
+                        () => {
+                            showModal.confirm('提示', '请确认xxx', () => { console.log('确认了') })
+                        }
+                    }
+                    >操作确认Modal</button>
                 </div>
             </div>
             <div>

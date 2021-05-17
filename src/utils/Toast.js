@@ -1,7 +1,7 @@
 import { ActivityIndicator, Icon, Loading, Toast } from "zarm";
 
 class showToast {
-    static message(msg = '提示', type = 'none', date = 2000) {
+    static message(msg = ' ', type = 'none', date = 2000) {
         switch (type) {
             case 'none':
                 Toast.show({
@@ -13,7 +13,7 @@ class showToast {
             case 'success':
                 Toast.show({
                     content: <div className="Toastbox">
-                        <Icon className="box-icon" type="right-round-fill" />
+                        <Icon className="box-icon" type="right" />
                         <div className="box-text">{msg}</div>
                     </div>,
                     mask: true,
