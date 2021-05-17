@@ -166,8 +166,8 @@ const PullBox = ({ isWindowBox = false, isTopBtn = false, reqParams = {}, reqApi
                     // },
                 }}
             >
-                {dataSource.map(e => {
-                    return <Cell>{e}</Cell>
+                {dataSource.map((e, i) => {
+                    return <Cell key={'list_pull_' + i}>{e}</Cell>
                 })}
             </Pull>
             <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>

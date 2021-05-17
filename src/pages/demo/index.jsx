@@ -11,18 +11,18 @@ import { actions as testActions } from '@/store/demo'
 import { formatUrl } from '@/utils/format.js'
 import { getWxConfigs } from '@/services/index_api'
 import FloatBottom from '@/component/Float/FloatBottom'
-import MySwiper from '@/component/swiper/MySwiper'
+
 import { showToast, showLoading } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
 import Wtabs from '@/component/tabs/Wtabs'
 
-
-import { Button, Cell, SwipeAction } from 'zarm'
+import { Button, Carousel, Cell, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
 import PullBox from './pull'
 import showModal from '@/utils/modal'
+import MySwiper from '@/component/swiper/MySwiper'
 
 
 
@@ -99,7 +99,13 @@ const Index = () => {
             </div>
 
             {/* swiper */}
-            <MySwiper height={200} list={['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0199a155c4790f32f8755e6604d4d5.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=604e35751d08384c4891ca7ddf168a05', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Frms.zhubajie.com%2Fresource%2Fredirect%3Fkey%3Dtianpeng%2F2015-11%2F14%2Fproduct%2F5646e9d57392f.jpg&refer=http%3A%2F%2Frms.zhubajie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=8c4fbf45b63e5fc9850299676231625a', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013cfe5c1b446da80121df904624c3.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=577eeeae616121b118debea5ce7bc7dc']} />
+            <div>
+                <h1>swiper</h1>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', boxSizing: 'border-box', margin: '0 0.6rem' }}>
+                    <MySwiper height='12rem' list={['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0199a155c4790f32f8755e6604d4d5.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=604e35751d08384c4891ca7ddf168a05', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Frms.zhubajie.com%2Fresource%2Fredirect%3Fkey%3Dtianpeng%2F2015-11%2F14%2Fproduct%2F5646e9d57392f.jpg&refer=http%3A%2F%2Frms.zhubajie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=8c4fbf45b63e5fc9850299676231625a', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013cfe5c1b446da80121df904624c3.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623485291&t=577eeeae616121b118debea5ce7bc7dc']} />
+                </div>
+            </div>
+
 
             {/*  SwipeAction */}
             <div>

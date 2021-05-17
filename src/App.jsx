@@ -5,9 +5,11 @@ import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import '@/assets/icon.css'
 import BaseLayout from '@/component/BaseLyout/index'
+import { Carousel } from 'zarm'
 
 function _App(props) {
     useEffect(() => {
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

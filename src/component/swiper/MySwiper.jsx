@@ -2,11 +2,9 @@
 import React from "react";
 import "./index.scss";
 
-
 import { Carousel } from "zarm";
 
-
-function MySwiper({ height = 200, list = [] }) {
+function MySwiper({ height = '200px', list = [] }) {
     return (
         <>
             {
@@ -14,7 +12,6 @@ function MySwiper({ height = 200, list = [] }) {
                     autoPlay
                     loop
                     direction="left"
-                    height={height}
                     autoPlayIntervalTime={5000}
                     onChangeEnd={(index) => {
                         // console.log(`onChangeEnd: ${index}`);
@@ -24,10 +21,11 @@ function MySwiper({ height = 200, list = [] }) {
                         list.map((item, i) => {
                             return (
                                 <div className="carousel__item__pic" key={+i}>
-                                    <img className='img' src={item} alt="" draggable={false} />
+                                    <img className='img' src={item} alt="err" style={{ height, width: '100%' }} />
                                 </div>
                             );
-                        })}
+                        })
+                    }
                 </Carousel>
             }
         </>
