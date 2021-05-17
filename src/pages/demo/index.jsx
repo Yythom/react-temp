@@ -21,6 +21,7 @@ import { Button, Cell, Popup, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
+import PullBox from './pull'
 
 
 
@@ -197,9 +198,10 @@ const Index = () => {
                     </div>
                 }
             ]}></Wtabs>
-
-
-
+            <div>
+                <h1>下拉刷新</h1>
+            </div>
+            <PullBox isTopBtn isWindowBox={false} />
         </div >
     )
 }
