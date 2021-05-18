@@ -25,27 +25,6 @@ html {
   height: 100%;
 }
 
-.notive-wrap {
-  z-index: 9999999;
-}
-
-.modal-button {
-  font-size: 1.4rem;
-  color: #0084ff !important;
-  /* color: #0073ff; */
-}
-
-.modal-button-wrap:before {
-  border-top: 1px solid rgb(245, 245, 245) !important;
-}
-
-.modal-button:before {
-  border-top: 1px solid rgb(245, 245, 245) !important;
-}
-
-.modal-button:nth-child(1)::before {
-  border-top: none !important;
-}
 
 .modal-mask {
   width: 100vw;
@@ -58,24 +37,6 @@ html {
   animation: ans 300ms;
 }
 
-.Toastbox {
-  .box-text {
-    margin-top: 0.4rem;
-  }
-}
-
-.loadingBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .box-text {
-    margin-top: 1rem;
-    color: #fff;
-    font-size: 1.3rem;
-  }
-}
 
 .swiper_wrap {
   backface-visibility: hidden;
