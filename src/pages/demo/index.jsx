@@ -16,7 +16,7 @@ import { showToast, showLoading } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
 import Wtabs from '@/component/tabs/Wtabs'
 
-import { Button, Carousel, Cell, SwipeAction } from 'zarm'
+import { Button, Cell, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
@@ -29,9 +29,11 @@ import MySwiper from '@/component/swiper/MySwiper'
 const Index = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const [list, setList] = useState([]);
     const demoStore = useSelector(state => state.demo, shallowEqual);
     useEffect(() => {
         console.log(testActions);
+        setList([1, 2, 3, 4, 5, 6, 7])
         console.log(formatUrl());
     }, [])
 
@@ -218,8 +220,14 @@ const Index = () => {
             <div>
                 <h1>下拉刷新</h1>
             </div>
-            <PullBox isTopBtn isWindowBox={false} maxHeight={300}  >
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((e, i) => {
+            <PullBox
+                isTopBtn
+                isWindowBox={false}
+                maxHeight={300}
+                list={list}
+                setList={setList}
+            >
+                {list.map((e, i) => {
                     return <Cell key={'list_pull_' + i}>{e}</Cell>
                 })}
             </PullBox>

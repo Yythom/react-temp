@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react';
-import { Pull, Cell, BackToTop } from 'zarm';
+import { Pull, BackToTop } from 'zarm';
 
 const REFRESH_STATE = {
     normal: 0, // 普通
@@ -27,6 +27,8 @@ const PullBox = ({
     isTopBtn = false,
     reqParams = {},
     reqApi,
+    setList,
+    list,
     maxHeight,
     children
 }) => {
@@ -34,13 +36,11 @@ const PullBox = ({
 
     const pullRef = useRef();
     const [bodyScroll, setBodyScroll] = useState(false);
-    const [dataSource, setDataSource] = useState([]);
     const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
     const [loading, setLoading] = useState(LOAD_STATE.normal);
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        setDataSource([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         setBodyScroll(isWindowBox);
     }, [])
 
@@ -53,7 +53,7 @@ const PullBox = ({
         setPage(1);
         // let res = await reqApi({ ...reqParams, page:1, pageSize: 10 });
         // if (res) {
-        //     setDataSource([...dataSource, res.list]);
+        //    
         // } else {
         //     setRefreshing(REFRESH_STATE.failure);
 
@@ -76,7 +76,7 @@ const PullBox = ({
         // if (res) {
         //     if (res.list[0]) {
         //         setPage(page + 1);
-        //         setDataSource([...dataSource, res.list]);
+        //         setList([...list, res.list]);
         //     } else {
         //         console.log('加载完了');
         //     }
@@ -86,10 +86,14 @@ const PullBox = ({
         // setLoading(loadingState);
 
         setTimeout(() => {
-            let loadingState = LOAD_STATE.complete;
-            // let loadingState = LOAD_STATE.success;
+            let loadingState = LOAD_STATE.success;
             // 成功？
-            // setDataSource([...dataSource, 1, 2, 3, 4, 5, 6, 7,8]);
+
+            if (list.length > 14) {
+                loadingState = LOAD_STATE.complete
+            } else {
+                setList([...list, '更多数据', '更多数据', '更多数据']);
+            }
             setLoading(loadingState);
         }, 1000);
     };
