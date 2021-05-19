@@ -1,9 +1,9 @@
 import Demo from '@/pages/demo/index'
 
 
-let BaseUrl = '/demo';
+const BaseUrl = '/demo';
 
-let router = () => {
+const router = () => {
     return {
         demo: {
             url: BaseUrl,
