@@ -1,21 +1,31 @@
 import { Modal } from "zarm";
 
+
 class showModal {
-    static alert(title = '标题', msg = '提示文字内容', onCancel = Function.prototype) {
+    /**
+       * @param {String} title String
+       * @param {Object} content Jsx
+       * @param {Function} onCancel Function
+    */
+    static alert(title = '标题', content = '提示文字内容', onCancel = Function.prototype) {
         const modal = Modal.alert({
             title: title,
-            content: msg,
+            content,
             onCancel: () => {
                 modal.hide();
             },
         });
     }
 
-
-    static confirm(title = '标题', msg = '提示文字内容', onOk) {
+    /**
+       * @param {String} title String
+       * @param {Object} content Jsx
+       * @param {Function} onCancel Function
+    */
+    static confirm(title = '标题', content = '提示文字内容', onOk) {
         Modal.confirm({
             title: title,
-            content: msg,
+            content,
             onCancel: () => {
 
             },

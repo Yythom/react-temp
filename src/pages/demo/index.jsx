@@ -20,7 +20,7 @@ import { Button, Cell, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
-import PullBox from './pull'
+import PullBox from '../../component/pullBox/pull'
 import showModal from '@/utils/modal'
 import MySwiper from '@/component/swiper/MySwiper'
 
@@ -74,12 +74,12 @@ const Index = () => {
                 <h1>modal</h1>
                 <div>
                     <button onClick={() => { showModal.alert('alert', 'test') }}>普通提示Modal</button>
-                    <button onClick={
-                        () => {
-                            showModal.confirm('提示', '请确认xxx', () => { console.log('确认了') })
-                        }
-                    }
-                    >操作确认Modal</button>
+                    <button onClick={() => {
+                        showModal.confirm('alert', <div>
+                            <input type="text" />
+                        </div>)
+                    }}>自定义内容modal</button>
+                    <button onClick={() => { showModal.confirm('提示', '请确认xxx', () => { console.log('确认了') }) }} >操作确认Modal</button>
                 </div>
             </div>
             <div>

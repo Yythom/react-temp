@@ -1,6 +1,4 @@
 import Demo from '@/pages/demo/index'
-
-
 const BaseUrl = '/demo';
 
 const router = () => {
