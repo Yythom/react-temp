@@ -37,7 +37,7 @@ class showToast {
     }
 }
 
-function showLoading(msg = '') {
+function showLoading(msg = '', stayTime = 30000) {
     Loading.hide();
     setTimeout(() => {
         Loading.show({
@@ -45,17 +45,22 @@ function showLoading(msg = '') {
                 <ActivityIndicator />
                 <div className="box-text">{msg}</div>
             </div>,
-            stayTime: 30000,
+            stayTime: stayTime,
         });
-    }, 100);
+    }, 10);
     // size="lg"
 }
 
 function hideLoading() {
-    Loading.hide();
+    setTimeout(() => {
+        Loading.hide();
+    }, 250);
 }
 function hideToast() {
-    Toast.hide();
+    setTimeout(() => {
+        Toast.hide();
+    }, 100);
+
 }
 
 export {

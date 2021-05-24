@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 // 倒计时转化Fn 时间戳
 function formatSeconds(value) {
     if (value === 0) return null;
@@ -59,14 +61,40 @@ function formatUrl() {
             }
         }
         Next(iterator);
-        return _obj
+        return { ..._obj, str: window.location.search }
 
     }
-    return 'no search_url'
+    return 'no find search-url'
+}
+/**
+ * @param {*} setTimer -设置页面定时器id （用于清除）
+ * @param {*} value -目标时间戳
+ * @param {*} setTime -设置当前倒计时state str
+ */
+function countdown(setTimer, value, setTime) {
+    let timer = setInterval(() => {
+        value -= 1;
+        let today_unix = dayjs().unix(); // 当前时间
+        let un = value - today_unix;
+        if (un > 0) {
+            setTime(formatSeconds(un));
+        } else {
+            setTime('');
+            clearInterval(timer);
+        }
+    }, 999.8)
+    setTimer(timer);
 }
 
+// 范围随机数
+function randomFrom(lowerValue, upperValue) {
+    return Math.floor(Math.random() * (upperValue - lowerValue + 1) + lowerValue);
+}
 
 export {
     formatSeconds,
-    formatUrl
+    formatUrl,
+    countdown,
+    randomFrom,
+
 }

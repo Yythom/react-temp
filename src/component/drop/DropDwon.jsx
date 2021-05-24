@@ -19,26 +19,31 @@ const Drop = ({
     }
 
     return (
-        <div className={(show && 'act_drop_wrap') + ' drop_wrap'}>
-            <div className='list_wrap' style={{ height: show ? itemHeight * list.length / 10 + 'rem' : 0 }}>
+        <>
+            <div className={(show && 'act_drop_wrap') + ' drop_wrap'}>
+                <div className='list_wrap' style={{ height: show ? itemHeight * list.length / 10 + 'rem' : 0 }}>
+                    {
+                        list.map((e, i) => {
+                            return (
+                                <div className={(item === e && 'act_drop_item') + ' drop_item'} onClick={() => { _onChange(e) }} style={{ height: show ? itemHeight / 10 + 'rem' : 0, transition: '300ms' }} key={spaceName + i}>{e.text}</div>
+                            )
+                        })
+                    }
+                </div>
                 {
-                    list.map((e, i) => {
-                        return (
-                            <div className={(item === e && 'act_drop_item') + ' drop_item'} onClick={() => { _onChange(e) }} style={{ height: show ? itemHeight / 10 + 'rem' : 0, transition: '300ms' }} key={spaceName + i}>{e.text}</div>
-                        )
-                    })
+                    show
+                    && <div className='drop-mask'
+                        style={{ top: show ? itemHeight * list.length / 10 + 'rem' : 0 }}
+                        onClick={
+                            () => {
+                                setShow(!show);
+                            }
+                        }
+                    />
                 }
             </div>
-            {
-                show
-                && <div className='drop-mask' style={{ top: show ? itemHeight * list.length / 10 + 'rem' : 0 }} onClick={
-                    () => {
-                        setShow(!show);
-                    }
-                }
-                />
-            }
-        </div>
+
+        </>
     )
 }
 export default Drop;

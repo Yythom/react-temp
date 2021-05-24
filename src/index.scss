@@ -37,6 +37,21 @@ html {
   animation: ans 300ms;
 }
 
+.loadingBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .box-text {
+    margin-top: 1.2em;
+  }
+}
+
+.box-text {
+  margin-top: 0.8rem;
+  color: #fff;
+}
 
 .swiper_wrap {
   backface-visibility: hidden;
@@ -44,6 +59,7 @@ html {
   overflow: hidden;
   box-sizing: border-box;
 }
+
 
 @keyframes ans {
   0% {

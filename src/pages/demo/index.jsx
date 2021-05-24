@@ -8,7 +8,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { actions as testActions } from '@/store/demo'
 
 // custom compontent
-import { formatUrl } from '@/utils/format.js'
+import { formatSeconds, formatUrl } from '@/utils/format.js'
 import { getWxConfigs } from '@/services/index_api'
 import FloatBottom from '@/component/Float/FloatBottom'
 
@@ -16,13 +16,17 @@ import { showToast, showLoading } from '@/utils/Toast'
 import Vtabs from '@/component/vtabs/Vtabs'
 import Wtabs from '@/component/tabs/Wtabs'
 
-import { Button, Cell, SwipeAction } from 'zarm'
+import { Button, Cell, Picker, SwipeAction } from 'zarm'
 
 import './index.scss'
 import Drop from '@/component/drop/DropDwon'
 import PullBox from '../../component/pullBox/pull'
 import showModal from '@/utils/modal'
 import MySwiper from '@/component/swiper/MySwiper'
+import dayjs from 'dayjs'
+import { countdown } from '@/utils/uitls'
+import { DIY_DATA } from './picker_data'
+import { getTestList } from '@/services/test'
 
 
 
@@ -50,42 +54,51 @@ const Index = () => {
 
     const [drop, setDrop] = useState(false)
     const [drop1, setDrop1] = useState(false)
+
+    const [time, setTime] = useState('')
+    const [timer, setTimer] = useState('');
+
+    const [picker, setPicker] = useState(false)
     return (
         <div className='demo_wrap' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
 
             {/* coustom */}
-            <button onClick={handleClick}>测试action</button>
-            <button onClick={handleClickAsync}>测试异步aciton</button>
-            <button onClick={() => {
+            <Button size='xs' onClick={handleClick}>测试action</Button>
+            <Button size='xs' onClick={handleClickAsync}>测试异步aciton</Button>
+            <Button size='xs' onClick={() => {
                 console.log(demoStore);
-            }}>输出</button>
+            }}>输出</Button>
 
-            <button onClick={() => { setShow(true); }}>float button</button>
+            {/* Toast */}
             <div>
                 <h1>Toast</h1>
                 <div>
-                    <button onClick={() => { showToast.message('这是一个提示') }}>普通提示</button>
-                    <button onClick={() => { showToast.message('成功', 'success') }}>成功提示</button>
-                    <button onClick={() => { showToast.message('成功', 'error') }}>错误提示</button>
+                    <Button size='xs' onClick={() => { showToast.message('这是一个提示') }}>普通提示</Button>
+                    <Button size='xs' onClick={() => { showToast.message('成功', 'success') }}>成功提示</Button>
+                    <Button size='xs' onClick={() => { showToast.message('成功', 'error') }}>错误提示</Button>
                 </div>
             </div>
+
+            {/* modal */}
             <div>
                 <h1>modal</h1>
                 <div>
-                    <button onClick={() => { showModal.alert('alert', 'test') }}>普通提示Modal</button>
-                    <button onClick={() => {
+                    <Button size='xs' onClick={() => { showModal.alert('alert', 'test') }}>普通提示Modal</Button>
+                    <Button size='xs' onClick={() => {
                         showModal.confirm('alert', <div>
                             <input type="text" />
                         </div>)
-                    }}>自定义内容modal</button>
-                    <button onClick={() => { showModal.confirm('提示', '请确认xxx', () => { console.log('确认了') }) }} >操作确认Modal</button>
+                    }}>自定义内容modal</Button>
+                    <Button size='xs' onClick={() => { showModal.confirm('提示', '请确认xxx', () => { console.log('确认了') }) }} >操作确认Modal</Button>
                 </div>
             </div>
+
+            {/* loading */}
             <div>
-                <h1>loading</h1>
+                <h1>loading 3s</h1>
                 <div>
-                    <button onClick={() => { showLoading('加载中') }}>普通提示</button>
+                    <Button size='xs' onClick={() => { showLoading('加载中', 3000) }}>普通提示</Button>
                 </div>
             </div>
 
@@ -93,12 +106,105 @@ const Index = () => {
             <div>
                 <h1>float</h1>
                 <div>
-                    <button onClick={() => { setShow(true); }}>下浮层</button>
+                    <Button size='xs' onClick={() => { setShow(true); }}>下浮层</Button>
                     <FloatBottom className='test__-' show={show} setShow={setShow} style={{ padding: '1.6rem 2rem' }}>
                         <div style={{ background: '#333', height: '300px', width: '100%' }}>111</div>
                     </FloatBottom>
                 </div>
             </div>
+
+            {/* picker */}
+            <div>
+                <h1>picker</h1>
+                <div>
+                    <Button size='xs' onClick={() => setPicker(true)}>自定义picker</Button>
+                    <Picker
+                        visible={picker}
+                        title="custom title"
+                        cancelText="Cancel"
+                        okText="Ok"
+                        dataSource={DIY_DATA}
+                        valueMember={'code'}
+                        // value={[1, 2]}
+                        itemRender={(data) => data.name}
+                        onOk={(selected) => {
+                            console.log('DIY Picker onOk: ', selected);
+                            // showToast.message('这是一个提示')
+                        }}
+                        onCancel={() => setPicker(!picker)}
+                    />
+                </div>
+            </div>
+
+            {/* float */}
+            <div>
+                <h1>format</h1>
+                <div>
+                    <Button size='xs' onClick={() => { countdown(setTimer, 1628919059, setTime) }}>倒计时</Button>
+                    <Button size='xs' onClick={() => { console.log(formatUrl()); }}>search参数</Button>
+                    <div>{time}</div>
+                </div>
+            </div>
+
+            {/* dropDown */}
+            <div style={{ position: 'sticky', top: '4.4rem', zIndex: '99', background: 'pink' }}>
+                <h1>dropDown</h1>
+                <div>
+                    <Button size='xs' onClick={() => { setDrop(!drop); setDrop1(false) }}>
+                        开关1
+                </Button>
+                    <Button size='xs' onClick={() => { setDrop1(!drop1); setDrop(false) }}>
+                        开关2
+                </Button>
+                    <Drop
+                        spaceName='test'
+                        setShow={() => { setDrop(!drop); setDrop1(false) }}
+                        show={drop}
+                        itemHeight="40"
+                        onChange={(type) => {
+                            console.log('选择了=----', type);
+                        }}
+                        list={[
+                            {
+                                text: '1111',
+                            },
+                            {
+                                text: '2222',
+                            },
+                            {
+                                text: '3333',
+                            },
+                            {
+                                text: '3333',
+                            }
+                        ]}
+                    />
+                    <Drop
+                        spaceName='test'
+                        setShow={() => { setDrop1(!drop1); setDrop(false) }}
+                        show={drop1}
+                        itemHeight="20"
+                        onChange={(type) => {
+                            console.log('选择了=----', type);
+                        }}
+                        list={[
+                            {
+                                text: '2',
+                            },
+                            {
+                                text: '2',
+                            },
+                            {
+                                text: '2',
+                            },
+                            {
+                                text: '3',
+                            }
+                        ]}
+                    />
+                </div>
+            </div>
+
 
             {/* swiper */}
             <div>
@@ -113,73 +219,17 @@ const Index = () => {
                 <SwipeAction
                     autoClose
                     left={[
-                        <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
+                        <Button size='xs' size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
                             左按钮1 </Button>,
                     ]}
                     right={[
-                        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
+                        <Button size='xs' size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
                     ]}
                     onOpen={() => console.log('open')}
                     onClose={() => console.log('close')}
                 >
                     <Cell style={{ marginBottom: '4px' }}>左右都能滑动（自动关闭）</Cell>
                 </SwipeAction>
-            </div>
-
-            <h1>dropDown</h1>
-            <div>
-                <button onClick={() => { setDrop(!drop); setDrop1(false) }}>
-                    开关1
-                </button>
-                <button onClick={() => { setDrop1(!drop1); setDrop(false) }}>
-                    开关2
-                </button>
-                <Drop
-                    spaceName='test'
-                    setShow={() => { setDrop(!drop); setDrop1(false) }}
-                    show={drop}
-                    itemHeight="40"
-                    onChange={(type) => {
-                        console.log('选择了=----', type);
-                    }}
-                    list={[
-                        {
-                            text: '1111',
-                        },
-                        {
-                            text: '2222',
-                        },
-                        {
-                            text: '3333',
-                        },
-                        {
-                            text: '3333',
-                        }
-                    ]}
-                />
-                <Drop
-                    spaceName='test'
-                    setShow={() => { setDrop1(!drop1); setDrop(false) }}
-                    show={drop1}
-                    itemHeight="20"
-                    onChange={(type) => {
-                        console.log('选择了=----', type);
-                    }}
-                    list={[
-                        {
-                            text: '2',
-                        },
-                        {
-                            text: '2',
-                        },
-                        {
-                            text: '2',
-                        },
-                        {
-                            text: '3',
-                        }
-                    ]}
-                />
             </div>
 
 
@@ -224,9 +274,17 @@ const Index = () => {
                 isTopBtn
                 isWindowBox={false}
                 maxHeight={300}
-                list={list}
-                setList={setList}
+                request={{
+                    params: {
+                        page: 1,
+                    },
+                    http: getTestList
+                }}
+                onScrollBottom={(_list) => {
+                    console.log(_list);
+                }}
             >
+                {/* <div style={{ height: '200px', background: '#999' }}>111</div> */}
                 {list.map((e, i) => {
                     return <Cell key={'list_pull_' + i}>{e}</Cell>
                 })}

@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import paging, { initing } from '@/utils/paging';
 import { useState, useEffect, useRef } from 'react';
 import { Pull, BackToTop } from 'zarm';
 import './index.scss'
@@ -25,10 +26,8 @@ const LOAD_STATE = {
 const PullBox = ({
     isWindowBox = false,
     isTopBtn = false,
-    reqParams = {},
-    reqApi,
-    setList,
-    list,
+    request = { params: { page: 1 }, http: Function.prototype },
+    onScrollBottom = Function.prototype, // 滚动到底不
     maxHeight,
     children
 }) => {
@@ -38,7 +37,7 @@ const PullBox = ({
     const [bodyScroll, setBodyScroll] = useState(false);
     const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
     const [loading, setLoading] = useState(LOAD_STATE.normal);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         setBodyScroll(isWindowBox);
@@ -50,54 +49,37 @@ const PullBox = ({
     // 模拟请求数据
     const refreshData = async () => {
         setRefreshing(REFRESH_STATE.loading);
-        setPage(1);
-        // let res = await reqApi({ ...reqParams, page:1, pageSize: 10 });
-        // if (res) {
-        //    
-        // } else {
-        //     setRefreshing(REFRESH_STATE.failure);
-
-        // }
-        // setRefreshing(REFRESH_STATE.success);
-
-
-        setTimeout(() => {
-            // setRefreshing(REFRESH_STATE.success);
-            setRefreshing(REFRESH_STATE.failure);
-        }, 1000);
+        initing(request, (newList) => {
+            let refreshState = REFRESH_STATE.failure
+            console.log(newList, 'init--list------');
+            if (newList) {
+                if (newList.list[0]) {
+                    onScrollBottom(newList)
+                    refreshState = REFRESH_STATE.success
+                }
+            }
+            setRefreshing(refreshState);
+        })
     };
 
     // 模拟加载更多数据
     const loadData = async () => {
         setLoading(LOAD_STATE.loading);
-
-        // let loadingState = LOAD_STATE.success;
-        // let res = await reqApi({ ...reqParams, page: page + 1 })
-        // if (res) {
-        //     if (res.list[0]) {
-        //         setPage(page + 1);
-        //         setList([...list, res.list]);
-        //     } else {
-        //         console.log('加载完了');
-        //     }
-        // } else {
-        //     loadingState = LOAD_STATE.failure
-        // }
-        // setLoading(loadingState);
-
-        setTimeout(() => {
-            let loadingState = LOAD_STATE.success;
-            // 成功？
-
-            if (list.length > 14) {
-                loadingState = LOAD_STATE.complete
+        paging(request, page, (newList) => {
+            let loadingState = LOAD_STATE.complete
+            console.log(newList, 'paging------');
+            if (newList) {
+                if (newList.list[0]) {
+                    onScrollBottom(newList);
+                    setPage(page + 1)
+                    loadingState = LOAD_STATE.success
+                }
             } else {
-                setList([...list, '更多数据', '更多数据', '更多数据']);
+                loadingState = LOAD_STATE.failure
             }
             setLoading(loadingState);
-        }, 1000);
+        })
     };
-
 
     const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight };
 
