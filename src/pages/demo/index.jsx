@@ -25,7 +25,8 @@ import showModal from '@/utils/modal'
 import MySwiper from '@/component/swiper/MySwiper'
 import dayjs from 'dayjs'
 import { countdown } from '@/utils/uitls'
-import { DIY_DATA } from './picker_data'
+// import { DIY_DATA } from './picker_data'
+import address from './address.json'
 import { getTestList } from '@/services/test'
 
 
@@ -123,7 +124,7 @@ const Index = () => {
                         title="custom title"
                         cancelText="Cancel"
                         okText="Ok"
-                        dataSource={DIY_DATA}
+                        dataSource={address}
                         valueMember={'code'}
                         // value={[1, 2]}
                         itemRender={(data) => data.name}
