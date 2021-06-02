@@ -27,7 +27,7 @@ const PullBox = ({
     isWindowBox = false,
     isTopBtn = false,
     request = { params: { page: 1 }, http: Function.prototype },
-    onScrollBottom = Function.prototype, // 滚动到底不
+    onScrollBottom = Function.prototype, // 滚动到底部回调
     maxHeight,
     children
 }) => {

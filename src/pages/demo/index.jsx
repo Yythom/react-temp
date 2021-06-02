@@ -28,6 +28,7 @@ import { countdown } from '@/utils/uitls'
 // import { DIY_DATA } from './picker_data'
 import address from './address.json'
 import { getTestList } from '@/services/test'
+import Sort from './sort'
 
 
 
@@ -59,11 +60,15 @@ const Index = () => {
     const [time, setTime] = useState('')
     const [timer, setTimer] = useState('');
 
-    const [picker, setPicker] = useState(false)
+    const [picker, setPicker] = useState(false);
+    const [sort, setSort] = useState(false)
     return (
         <div className='demo_wrap' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
-
+            <h1>排序</h1>
+            <Button size='xs' onClick={() => setSort(!sort)}>切换排序</Button>
+            <Sort sort={sort} />
+            <br />
             {/* coustom */}
             <Button size='xs' onClick={handleClick}>测试action</Button>
             <Button size='xs' onClick={handleClickAsync}>测试异步aciton</Button>
@@ -136,7 +141,6 @@ const Index = () => {
                     />
                 </div>
             </div>
-
             {/* float */}
             <div>
                 <h1>format</h1>
