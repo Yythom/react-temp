@@ -9,7 +9,6 @@ const SortableItem = SortableElement(({ value }) => {
 });
 // hoc
 const SortableList = SortableContainer(({ items, sort }) => {
-    console.log(sort, 'sort');
     return (
         <ul style={{ display: sort && 'flex' }}>
             {items.map((value, index) => (
@@ -28,7 +27,8 @@ const SortableList = SortableContainer(({ items, sort }) => {
 function SortableComponent({ sort }) {
     const [list, setlist] = useState(['Item 1', 'Item 2', 'Item 3', 'Item 4'])
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        let newarr = arrayMove(list, oldIndex, newIndex)
+        let newarr = arrayMove(list, oldIndex, newIndex);
+        console.log(newarr);
         setlist(newarr)
     };
     return <SortableList sort={sort} items={list} axis={sort ? "x" : "y"} onSortEnd={onSortEnd} />;
