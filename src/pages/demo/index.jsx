@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // basic
 import React, { useEffect, useState } from 'react'
 import Header from '@/component/header/Index'
@@ -224,11 +225,11 @@ const Index = () => {
                 <SwipeAction
                     autoClose
                     left={[
-                        <Button size='xs' size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
+                        <Button size='xs' shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
                             左按钮1 </Button>,
                     ]}
                     right={[
-                        <Button size='xs' size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
+                        <Button size='xs' shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
                     ]}
                     onOpen={() => console.log('open')}
                     onClose={() => console.log('close')}

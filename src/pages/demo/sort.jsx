@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 
@@ -26,9 +26,17 @@ const SortableList = SortableContainer(({ items, sort }) => {
 
 function SortableComponent({ sort }) {
     const [list, setlist] = useState(['Item 1', 'Item 2', 'Item 3', 'Item 4'])
-    const onSortEnd = ({ oldIndex, newIndex }) => {
+
+    /**
+     *  collection: "newGifs" 自定义在 SortableItem上的属性
+     *  isKeySorting: undefined
+     *  newIndex: 1
+     *  nodes: Array
+     *  oldIndex: 2
+     */
+    const onSortEnd = ({ oldIndex, newIndex, collection }) => { // SortableItem
         let newarr = arrayMove(list, oldIndex, newIndex);
-        console.log(newarr);
+        console.log(newarr, collection);
         setlist(newarr)
     };
     return <SortableList sort={sort} items={list} axis={sort ? "x" : "y"} onSortEnd={onSortEnd} />;
