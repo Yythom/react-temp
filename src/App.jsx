@@ -3,7 +3,7 @@ import React from 'react'
 //布局组件
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import '@/assets/icon.css'
+import '@/assets/common.scss'
 import BaseLayout from '@/component/BaseLyout/index'
 
 function _App(props) {
