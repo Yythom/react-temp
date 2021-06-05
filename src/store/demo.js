@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // import * as actionType from './contants'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-
+import { login } from '@/services/test'
 /**
  * 初始化数据
  */
@@ -23,8 +23,13 @@ const testAsync = createAsyncThunk(
     'user/testAsync',
     async (data, thunkAPI) => { // data 微信获取到的信息
         console.log(data, '异步接收到的data');
-
-        return data
+        let result = {}
+        let res = await login();
+        console.log(res);
+        if (res) {
+            result = res
+        }
+        return result
     }
 )
 

@@ -1,27 +1,26 @@
+import { hideLoading, showLoading, showToast } from '@/utils/Toast'
 import axios from 'axios'
 import { baseURL, timeout } from './config'
 
-let pending = []; //声明一个数组用于存储每个请求的取消函数和axios标识
-// let cancelToken = axios.CancelToken;
-let removePending = (config) => {
-    // console.log(config);
-    for (let i in pending) {
-        if (pending[i].url === axios.defaults.baseURL + config.url) { //在当前请求在数组中存在时执行取消函数
-            console.log('取消')
-            pending[i].f(); //执行取消操作
-            //pending.splice(i, 1); 根据具体情况决定是否在这里就把pending去掉
-            console.log(pending[i].url);
-        }
-    }
-}
+// let pending = []; //声明一个数组用于存储每个请求的取消函数和axios标识
+// let removePending = (config) => {
+//     // console.log(config);
+//     for (let i in pending) {
+//         if (pending[i].url === axios.defaults.baseURL + config.url) { //在当前请求在数组中存在时执行取消函数
+//             pending[i].f(); //执行取消操作
+//             console.log(pending[i].url);
+//         }
+//     }
+// }
 
 function request(config) {
+    showLoading();
     const instance = axios.create({
         baseURL,
         timeout,
         headers: {
             'Content-Type': 'application/json',
-            // 'token': localStorage.getItem('token') || '',
+            'token': localStorage.getItem('token') || '',
         }
     })
 
@@ -32,7 +31,7 @@ function request(config) {
 
     //请求拦截
     instance.interceptors.request.use(function (res) {
-        removePending(config); //在一个axios发送前执行一下判定操作，在removePending中执行取消操作
+        // removePending(config); //在一个axios发送前执行一下判定操作，在removePending中执行取消操作
         /**
          * @addToken
          */
@@ -45,18 +44,16 @@ function request(config) {
     // 此处封装一层捕捉错误
     return new Promise((resolve, reject) => {
         instance(config).then(res => {
-            if (res.code !== '0') {
-                setTimeout(() => {
-                    console.log(res.msg);
-                }, 200);
+            hideLoading()
+            if (res.code != '0') {
+                showToast.message(res.msg, 'error')
                 resolve(false)
             } else {
                 resolve(res.result)
             }
+
         }).catch(err => {
-            /**
-             * @err
-             */
+            hideLoading();
             if (err.response) {
 
 

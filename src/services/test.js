@@ -10,8 +10,18 @@ const getTestList = async (data) => {
     return result;
 }
 
+const login = async (data) => {
+    const result = await request({
+        method: 'post',
+        url: '/login',
+        data: { order_id: "476715970279375872", type: '1' },
+    })
+    return result;
+}
+
 
 export {
     getTestList,
+    login,
 }
 

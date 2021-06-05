@@ -52,15 +52,10 @@ function showLoading(msg = '', stayTime = 30000) {
 }
 
 function hideLoading() {
-    setTimeout(() => {
-        Loading.hide();
-    }, 250);
+    Loading.hide();
 }
 function hideToast() {
-    setTimeout(() => {
-        Toast.hide();
-    }, 100);
-
+    Toast.hide();
 }
 
 export {
