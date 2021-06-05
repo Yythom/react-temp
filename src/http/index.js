@@ -45,7 +45,7 @@ function request(config) {
     // 此处封装一层捕捉错误
     return new Promise((resolve, reject) => {
         instance(config).then(res => {
-            if (res.code !== '0') {
+            if (res.code != '0') {
                 setTimeout(() => {
                     console.log(res.msg);
                 }, 200);
