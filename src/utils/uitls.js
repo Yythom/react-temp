@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 
 
-export function getLocal(key) {
+function getLocal(key) {
     if (localStorage.getItem(key)) {
         return JSON.parse(localStorage.getItem(key))
     } else return false
@@ -16,7 +16,7 @@ export function getLocal(key) {
  * @param {延迟} threshold 
  * @param {是否直接执行} immediate
  */
-export function debounce(func, threshold = 500, immediate = false) {
+function debounce(func, threshold = 500, immediate = false) {
     if (typeof func !== 'function') {
         throw new Error('First argument of debounce function should be a function');
     }
@@ -37,7 +37,7 @@ export function debounce(func, threshold = 500, immediate = false) {
     };
 }
 
-export function throttle(fn, wait = 500, isImmediate = false) {
+function throttle(fn, wait = 500, isImmediate = false) {
     var flag = true;
     if (isImmediate) {
         return function () {
@@ -61,7 +61,7 @@ export function throttle(fn, wait = 500, isImmediate = false) {
     }
 }
 
-export const formDateMonth = (date, type) => {
+const formDateMonth = (date, type) => {
     // new Date((1597307920.273 * 1000) - 86400000 *2).toLocaleString()
 
     date = new Date(date * 1000)
@@ -87,10 +87,10 @@ export const formDateMonth = (date, type) => {
     }
 }
 
-export const isMobile = (s) => /^1[3-9][0-9]{9}$/.test(s);
+const isMobile = (s) => /^1[3-9][0-9]{9}$/.test(s);
 
 
-export const systemScreen = () => {
+const systemScreen = () => {
     //（浏览器窗口上边界内容高度）
     function getDocumentTop() {
         var scrollTop = 0,
@@ -142,31 +142,8 @@ export const systemScreen = () => {
     return obj
 }
 
-export function setCookie(name, value, n) {
-    var oDate = new Date();
-    oDate.setDate(oDate.getDate() + n);
-    document.cookie = name + "=" + value + ";expires=" + oDate;
-}
-
-export function getCookie(name) {
-    var str = document.cookie;
-    var arr = str.split("; ");
-    for (var i = 0; i < arr.length; i++) {
-        //console.log(arr[i]);
-        var newArr = arr[i].split("=");
-        if (newArr[0] == name) {
-            return newArr[1];
-        }
-    }
-}
-
-//清除cookie  
-export function clearCookie(name) {
-    setCookie(name, "", -1);
-}
-
 // 一键导航
-export function goMap(desc, lat, lng) {
+function goMap(desc, lat, lng) {
     let isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1; //android终端
     let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     if (isiOS) {
@@ -180,7 +157,7 @@ export function goMap(desc, lat, lng) {
     window.location.href = `https://apis.map.qq.com/tools/poimarker?type=0&marker=${map.marker}&key=4I7BZ-HIS3P-ELWD3-L2R4G-MOYBJ-OLBXZ&referer=hb-h5`
 }
 
-export async function getLal(address) {
+async function getLal(address) {
     //对指定地址进行解析
     geocoder.getLocation(address);
     return new Promise((resolve, reject) => {
@@ -198,7 +175,7 @@ export async function getLal(address) {
         })
     });
 }
-export async function getAddress(lat, lng) {
+async function getAddress(lat, lng) {
     let coord = new qq.maps.LatLng(lat, lng);
     //对指定地址进行解析
     geocoder.getAddress(coord);
@@ -225,8 +202,7 @@ export async function getAddress(lat, lng) {
  * @param {*} value -目标时间戳
  * @param {*} setTime -设置当前倒计时state str
  */
-
-export function countdown(setTimer, value, setTime) {
+function countdown(setTimer, value, setTime) {
     let timer = setInterval(() => {
         value -= 1;
         let today_unix = dayjs(dayjs().format('YYYY-MM-DD')).unix(); // 当前时间
@@ -241,11 +217,53 @@ export function countdown(setTimer, value, setTime) {
     setTimer(timer);
 }
 
-
-export const voiceBroadcast = (text) => {
+const voiceBroadcast = (text) => {
     var url = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=" + encodeURI(text); // baidu文字转语音
     var voiceContent = new Audio(url);
     console.log(voiceContent);
     voiceContent.src = url;
     voiceContent.play();
 };
+
+
+function getValue(search, key) {
+    //1.找出key第一次出现的位置
+    var start = search.indexOf(key);
+    if (start == -1) {
+        return;//说明没有字符串中key
+    } else {
+        //2.找出键值对结束的位置
+        var end = search.indexOf("&", start);
+        if (end == -1) {
+            //这是最后一个键值对
+            end = search.length;
+        }
+    }
+    //3.将这个键值对提取出来
+    var str = search.substring(start, end);
+
+    //4.key=value   获取value
+    var arr = str.split("=");
+    return arr[1];
+}
+
+export {
+    getLocal,
+
+    debounce,
+    throttle,
+
+    goMap,
+    getLal,
+    getAddress,
+
+    countdown,
+    formDateMonth,
+    isMobile,
+
+
+    getValue,
+    voiceBroadcast,
+
+    systemScreen,
+}
