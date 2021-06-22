@@ -246,6 +246,15 @@ function getValue(search, key) {
     var arr = str.split("=");
     return arr[1];
 }
+function getStorageSync(key) {
+    let temp = JSON.parse(localStorage.getItem(key)).data
+    return temp
+}
+function setStorageSync(key, value) {
+    let temp = JSON.stringify({ data: value });
+    localStorage.setItem(key, temp);
+}
+
 
 export {
     getLocal,
@@ -261,6 +270,8 @@ export {
     formDateMonth,
     isMobile,
 
+    getStorageSync,
+    setStorageSync,
 
     getValue,
     voiceBroadcast,

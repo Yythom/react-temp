@@ -37,6 +37,11 @@ html {
   animation: ans 300ms;
 }
 
+.za-loading__container {
+  width: 8rem !important;
+  height: 8rem !important;
+}
+
 .loadingBox {
   display: flex;
   flex-direction: column;
@@ -44,7 +49,8 @@ html {
   align-items: center;
 
   .box-text {
-    margin-top: 1.2em;
+    // font-size: 1.2rem;
+    margin-top: 1.2rem;
   }
 }
 

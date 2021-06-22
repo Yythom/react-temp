@@ -1,4 +1,5 @@
 import Demo from '@/pages/demo/index'
+import Rich from '@/pages/edit-rich/index'
 const BaseUrl = '/demo';
 
 const router = () => {
@@ -7,6 +8,11 @@ const router = () => {
             url: BaseUrl,
             desc: '主页',
             page: Demo
+        },
+        rich: {
+            url: '/rich',
+            desc: '富文本',
+            page: Rich
         },
     }
 }
