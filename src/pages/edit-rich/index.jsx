@@ -71,9 +71,9 @@ const Index = () => {
                         // plugins: ["quickbars", "link", "table"],
                         plugins: plugin,
                         quickbars_selection_toolbar: `bold italic forecolor | link blockquote quickimage`,
-                        toolbar: `save ｜ help ｜ code undo redo restoredraft | cut copy pastetext | forecolor backcolor bold italic underline strikethrough link anchor | alignleft aligncenter alignright alignjustify outdent indent | \
+                        toolbar: `save ｜ code undo redo restoredraft | cut copy pastetext | forecolor backcolor bold italic underline strikethrough link anchor | alignleft aligncenter alignright alignjustify outdent indent | \
                             styleselect formatselect fontselect fontsizeselect | bullist numlist | blockquote subscript superscript removeformat | \
-                            table image media charmap emoticons hr pagebreak insertdatetime print preview | fullscreen | bdmap indent2em lineheight formatpainter axupimgs importword`,
+                            table image media charmap emoticons hr pagebreak insertdatetime print preview | fullscreen | bdmap indent2em lineheight formatpainter axupimgs importword ｜ insertdatetime ｜ help `,
                     }}
                     onEditorChange={(val) => {
                         setHtmlstr(val);
