@@ -37,6 +37,11 @@ html {
   animation: ans 300ms;
 }
 
+.za-loading__container {
+  width: 8rem !important;
+  height: 8rem !important;
+}
+
 .loadingBox {
   display: flex;
   flex-direction: column;
