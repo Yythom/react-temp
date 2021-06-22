@@ -1,5 +1,7 @@
 const apiKey = 'b157zgyp4h00irdb49j690a4run8cnc00x7c1sge45udbftc';
-
+/**
+ *  @url 插件文档地址 http://tinymce.ax-z.cn/plugins/insertdatetime.php
+ */
 const plugin = [
     "save",
     // "advlist",          // 高级列表
