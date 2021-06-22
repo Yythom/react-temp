@@ -1,1 +1,12 @@
-.rich_wrap {}
+.rich_wrap {
+    .rich-render-warp {
+        position: fixed;
+        z-index: 9999;
+        right: 1rem;
+        bottom: 1rem;
+        width: 400px;
+        height: 700px;
+        border: 2px solid #ccc;
+        // background-color: #fff;
+    }
+}

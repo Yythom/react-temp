@@ -21,9 +21,6 @@ function _Layout(props) {
         }
     }, [])
 
-
-
-
     return (
         <div className='layout animate__fadeIn animate__animated' style={{ boxSizing: 'border-box', paddingBottom: '6.1rem' }}>
             <Switch>
@@ -37,7 +34,7 @@ function _Layout(props) {
                 }
                 <Redirect to="/404" />
             </Switch>
-            <Bar />
+            {/* <Bar /> */}
         </div>
     )
 }
