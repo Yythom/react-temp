@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Editor } from "@tinymce/tinymce-react";
 import html2canvas from "html2canvas";
 import { hideLoading, showLoading, showToast } from '@/utils/Toast';
-import { plugin } from './rich-config';
+import { apiKey, plugin } from './rich-config';
 import './index.scss';
 import { htmlToimage } from './fetch';
 
@@ -22,7 +22,7 @@ const Index = () => {
                 <Editor
                     style={{ display: editload ? "none" : "block" }}
                     initialValue={inithtml}
-                    apiKey='b157zgyp4h00irdb49j690a4run8cnc00x7c1sge45udbftc'
+                    apiKey={apiKey}
                     init={{
                         init_instance_callback: () => {
                             hideLoading();
