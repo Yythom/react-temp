@@ -10,7 +10,7 @@ const router = () => {
             page: Demo
         },
         rich: {
-            url: '/rich',
+            url: '/',
             desc: '富文本',
             page: Rich
         },

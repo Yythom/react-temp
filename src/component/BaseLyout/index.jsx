@@ -22,7 +22,7 @@ function _Layout(props) {
     }, [])
 
     return (
-        <div className='layout animate__fadeIn animate__animated' style={{ boxSizing: 'border-box', paddingBottom: '6.1rem' }}>
+        <div className='layout animate__fadeIn animate__animated' style={{ boxSizing: 'border-box' }}>
             <Switch>
                 { // 路由组件
                     Object.values(router).map(e => {
