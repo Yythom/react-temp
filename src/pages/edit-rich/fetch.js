@@ -8,8 +8,8 @@ import html2canvas from 'html2canvas';
 const htmlToimage = (_class) => {
     // return new Promise((resolve, reject) => {
     html2canvas(document.querySelector(`.${_class}`), {
-        scale: 4,
-        dpi: 320,
+        scale: 6,
+        dpi: 400,
         allowTaint: false,
         useCORS: true,
     }).then((canvas) => {
