@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import './wtabs.scss'
+import { useState } from 'react';
 import { Tabs } from 'zarm';
+import './wtabs.scss';
+
 const { Panel } = Tabs;
 const Wtabs = ({
     list = [], // 左侧列表

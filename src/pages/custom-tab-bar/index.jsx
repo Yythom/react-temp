@@ -1,5 +1,4 @@
-import React, { memo, useState } from 'react'
-
+import { memo, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { actions } from './store/slice'
@@ -8,7 +7,7 @@ import './index.scss'
 const bar_height = 60;
 export default memo(() => {
     const dispatch = useDispatch();
-    const tabbarState = useSelector(state => state.tabbar, shallowEqual);
+    const tabbarState = useSelector(state => state.tabSlice, shallowEqual);
     const history = useHistory();
     const [tabBars] = useState([
         {
@@ -20,7 +19,7 @@ export default memo(() => {
             activeIconColor: '#ff8c2d',
         },
         {
-            url: '/pages/center/index',
+            url: '/center',
             text: '个人中心',
             icon: <i className='iconfont icon-wode1' />,
             iconColor: '',

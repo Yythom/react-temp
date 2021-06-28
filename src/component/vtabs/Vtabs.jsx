@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import './vtabs.scss'
+import { useEffect, useState } from 'react';
 import { Tabs } from 'zarm';
+import './vtabs.scss';
+
 const { Panel } = Tabs;
 const Vtabs = ({
     list = [], // 左侧列表

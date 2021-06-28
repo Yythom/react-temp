@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 // basic
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '@/component/header/Index'
 import { useHistory } from 'react-router'
 
 // store
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { actions as testActions } from '@/store/demo'
+import { actions as testActions } from '@/store/demoSlice'
 
 // custom compontent
 import { formatSeconds, formatUrl } from '@/utils/format.js'
@@ -37,7 +37,7 @@ const Index = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [list, setList] = useState([]);
-    const demoStore = useSelector(state => state.demo, shallowEqual);
+    const demoStore = useSelector(state => state.demoSlice, shallowEqual);
     useEffect(() => {
         console.log(testActions);
         setList([1, 2, 3, 4, 5, 6, 7])
@@ -158,10 +158,10 @@ const Index = () => {
                 <div>
                     <Button size='xs' onClick={() => { setDrop(!drop); setDrop1(false) }}>
                         开关1
-                </Button>
+                    </Button>
                     <Button size='xs' onClick={() => { setDrop1(!drop1); setDrop(false) }}>
                         开关2
-                </Button>
+                    </Button>
                     <Drop
                         spaceName='test'
                         setShow={() => { setDrop(!drop); setDrop1(false) }}

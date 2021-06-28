@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-import React from 'react'
 //布局组件
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
@@ -15,11 +13,7 @@ function _App(props) {
 
     return (
         <Router>
-            <Switch>
-                <Route path='/' component={BaseLayout} ></Route>
-                <Route path='/404' exact component={() => <h2>404</h2>}></Route>
-                <Redirect to="/404" />
-            </Switch>
+            <Route path='/' component={BaseLayout} ></Route>
         </Router>
     )
 }

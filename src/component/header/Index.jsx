@@ -1,6 +1,6 @@
-import React from 'react';
-import './index.scss'
 import { useHistory } from 'react-router-dom';
+import './index.scss';
+
 function Header({ onClick, dark, background, title, right }) {
     const history = useHistory();
 

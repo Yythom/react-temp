@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import './float_bottom.scss'
 
 const Float = ({ show, hide, setShow, className, style, children }) => {

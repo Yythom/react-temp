@@ -1,8 +1,5 @@
-
-import React from "react";
-import "./index.scss";
-
 import { Carousel } from "zarm";
+import "./index.scss";
 
 function MySwiper({ height = '200px', list = [], style }) {
     return (

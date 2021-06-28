@@ -2,7 +2,8 @@
 import paging, { initing } from '@/utils/paging';
 import { useState, useEffect, useRef } from 'react';
 import { Pull, BackToTop } from 'zarm';
-import './index.scss'
+import './index.scss';
+
 const REFRESH_STATE = {
     normal: 0, // 普通
     pull: 1, // 下拉刷新（未满足刷新条件）
@@ -179,7 +180,7 @@ const PullBox = ({
                     }}
                 >
                     Up
-               </div>
+                </div>
             </BackToTop>
         </div>
     );

@@ -1,4 +1,6 @@
 import Demo from '@/pages/demo/index'
+import CreatePage from '@/pages/create_page/index'
+
 const BaseUrl = '/demo';
 
 const router = () => {
@@ -7,6 +9,11 @@ const router = () => {
             url: BaseUrl,
             desc: '主页',
             page: Demo
+        },
+        CreatePage: {
+            url: '/',
+            desc: '创建页面',
+            page: CreatePage
         },
     }
 }

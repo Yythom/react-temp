@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import React from 'react';
 import './index.scss';
 import 'animate.css';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -35,7 +34,7 @@ function _Layout(props) {
                     })
 
                 }
-                <Redirect to="/404" />
+                <Redirect to="/" />
             </Switch>
             <Bar />
         </div>

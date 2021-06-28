@@ -2,7 +2,7 @@
 // import * as actionType from './contants'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getLocal } from '../utils/uitls';
-import { actions as testActions } from './demo'
+import { actions as testActions } from './demoSlice'
 /**
  * 初始化数据
  */
