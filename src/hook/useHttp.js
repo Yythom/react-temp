@@ -32,11 +32,11 @@ function useHttp(
         req()
     }, [])
 
-    return {
+    return [
         isloading,
         result,
         refresh,
-    }
+    ]
 }
 
 export default useHttp;

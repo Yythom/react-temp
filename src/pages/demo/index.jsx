@@ -39,7 +39,7 @@ const Index = () => {
     const dispatch = useDispatch();
     const [list, setList] = useState([]);
     const demoStore = useSelector(state => state.demoSlice, shallowEqual);
-    const { isloading, result, refresh, } = useHttp(getTestList, { page: 1 });
+    const [isloading, result, refresh,] = useHttp(getTestList, { page: 1 });
     useEffect(() => {
         console.log(testActions);
         setList([1, 2, 3, 4, 5, 6, 7])
