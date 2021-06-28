@@ -17,11 +17,11 @@ const Index = () => {
     const dispatch = useDispatch();
     const [pageData, setPageData] = useState(1);
     const state = useSelector(state => state, shallowEqual);
-    const { isloading, result, refresh } = useHttp();
+    const [isloading, res, refresh] = useHttp();
 
     useEffect(() => {
-        console.log(result, isloading, 'result');
-    }, [result])
+        console.log(res, isloading, 'result');
+    }, [res])
 
     isloading ? showLoading() : hideLoading();
     return (
