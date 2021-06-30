@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import Sort from './sort'
+
 function Dnd() {
+    const [sort, setSort] = useState(null);
+
     return (
         <div>
-            dnd
-
+            <Sort sort={sort} />
         </div>
     )
 }
