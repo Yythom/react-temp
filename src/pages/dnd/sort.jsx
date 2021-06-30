@@ -5,8 +5,18 @@ import { Button } from 'zarm';
 
 const SortableItem = SortableElement(({ value }) => {
     return (
-        <div className='item-content' style={{ background: '#fff', flexShrink: '0', height: '3rem', boxSizing: 'content-box', padding: '.6rem 1.5rem', margin: '0.2rem', lineHeight: '3rem' }}>
-            {value}
+        <div className='item-content move-square'>
+            <div>
+                {value}
+            </div>
+            <Button className='del'
+                onClick={(e) => {
+                    e.stopPropagation();
+                    console.log();
+                }}
+            >
+                删除
+            </Button>
         </div>
     )
 });
@@ -15,8 +25,8 @@ const SortableList = SortableContainer(({ items, sort }) => {
     return (
         <ul style={
             sort
-                ? { display: 'flex', flexDirection: "row", maxHeight: '20rem', flexWrap: 'wrap' } :
-                { display: 'flex', flexDirection: "column", maxHeight: '12rem', overflow: 'scroll' }
+                ? { display: 'flex', flexDirection: "row", maxHeight: '100%', flexWrap: 'wrap' } :
+                { display: 'flex', flexDirection: "column", maxHeight: '100%', overflow: 'scroll' }
         }
         >
             {
@@ -49,7 +59,7 @@ function SortableComponent({ sort }) {
         console.log(newarr, collection);
         setlist(newarr)
     };
-    return <SortableList sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
+    return <SortableList distance={10} sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
 }
 
 
