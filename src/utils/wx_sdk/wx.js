@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const configWx = async () => {
-    const host = document.location.href;
+    const host = window.location.href;
     let _res = await getWxConfigs({ url: host, })
     console.log(_res, 'getWxConfigs');
     if (_res) {
