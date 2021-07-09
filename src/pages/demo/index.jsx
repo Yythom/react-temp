@@ -29,8 +29,9 @@ import { countdown } from '@/utils/uitls'
 // import { DIY_DATA } from './picker_data'
 import address from './address.json'
 import { getTestList } from '@/services/test'
-import Sort from './sort'
 import useHttp from 'src/hook/useHttp'
+import useCountdown from 'src/hook/useCountDown'
+import Sort from './sort'
 
 
 
@@ -38,8 +39,19 @@ const Index = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [list, setList] = useState([]);
+    const [page, setPage] = useState(1);
     const demoStore = useSelector(state => state.demoSlice, shallowEqual);
-    const [isloading, result, refresh,] = useHttp(getTestList, { page: 1 });
+    const [isloading, result, refresh,] = useHttp(getTestList, { params: { page } });
+
+
+    // const [countdown, setTargetDate, formattedRes] = useCountdown(
+    //     {
+    //         targetDate: '2021-08-31 24:00:00',
+    //         interval: 1000,
+    //         onEnd: () => { console.log('end'); }
+    //     }
+    // );
+    // const { days, hours, minutes, seconds, milliseconds } = formattedRes;
     useEffect(() => {
         console.log(testActions);
         setList([1, 2, 3, 4, 5, 6, 7])
@@ -68,6 +80,7 @@ const Index = () => {
     return (
         <div className='demo_wrap' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
+
             <h1>排序</h1>
             <Button size='xs' onClick={() => setSort(!sort)}>切换排序</Button>
             <Sort sort={sort} />

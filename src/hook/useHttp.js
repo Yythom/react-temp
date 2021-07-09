@@ -3,29 +3,38 @@
 import { useEffect, useState, useCallback } from "react";
 
 function useHttp(
-    http = function promise() {
+    service = function promise() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve({ name: '21938012' })
             }, 2000);
         })
     },
-    params = {},
+    options = {
+        params: {},
+
+    },
 ) {
     const [result, setResult] = useState(null);
     const [isloading, setIsloading] = useState(true);
-    const req = useCallback(async () => {
+
+    function resultProcess(res, cb) {
+        if (!res) return
+        setResult(res);
+        setIsloading(false);
+        if (typeof cb === 'function') cb(res);
+    };
+
+    const req = useCallback(async (cb) => {
         setIsloading(true)
-        const _result = await http({ ...params });
-        setResult(_result);
-        setIsloading(false)
+        const _result = await service({ ...options.params });
+        resultProcess(_result, cb);
     });
 
-    const refresh = useCallback(async () => {
+    const refresh = useCallback(async (params, cb) => {
         setIsloading(true)
-        const _result = await http({ ...params });
-        setResult(_result);
-        setIsloading(false)
+        const _result = await service({ ...options.params, ...params });
+        resultProcess(_result, cb);
     })
 
     useEffect(() => {
