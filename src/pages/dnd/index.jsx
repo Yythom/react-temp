@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import Sort from './sort'
 import './index.scss'
+import { useEffect } from 'react';
+
 function Dnd() {
     const [sort, setSort] = useState(null);
+    useEffect(() => {
+    }, [])
 
     return (
         <div className='dnd_wrap fa'>

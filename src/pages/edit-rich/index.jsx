@@ -61,7 +61,7 @@ const Index = () => {
                         },
                         language: 'zh_CN',
                         content_style: "img {max-width:100%;} *{text-align: center;} body{margin:0}",
-                        height: '100vh',
+                        height: '100%',
                         width: 500,
                         branding: false,
                         menubar: false,
