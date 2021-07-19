@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "d94bd9e9-6c01-47ee-a713-86dd95c79f99",
+		"name": "location",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "经纬度获取信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"lat\": \"30.5702\",\n\"lng\": \"104.06476\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://49.234.41.182:8701/getLocation",
+					"protocol": "http",
+					"host": [
+						"49",
+						"234",
+						"41",
+						"182"
+					],
+					"port": "8701",
+					"path": [
+						"getLocation"
+					]
+				},
+				"description": "地址解析"
+			},
+			"response": []
+		},
+		{
+			"name": "地址获取信息",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "dWlkPTExMDkwOCZsb25naXR1ZGU9MTE5LjQyNSZsYXRpdHVkZT0zMi4xODk1OSZzaWduPUI1ODkzMzZDRTYxMDdDNEQ5Njk3RDQzN0U4MUIwODFG",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\":\"四川省成都市武侯区\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://49.234.41.182:8701/getLocationDetail",
+					"protocol": "http",
+					"host": [
+						"49",
+						"234",
+						"41",
+						"182"
+					],
+					"port": "8701",
+					"path": [
+						"getLocationDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "路线规划",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"39.984042,116.307535\",\n    \"to\": \"39.980869,116.325238\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://49.234.41.182:8701/polyLine",
+					"protocol": "http",
+					"host": [
+						"49",
+						"234",
+						"41",
+						"182"
+					],
+					"port": "8701",
+					"path": [
+						"polyLine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "关键词提示",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"keyword\":\"东方希望天\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://49.234.41.182:8701/locationKeyword",
+					"protocol": "http",
+					"host": [
+						"49",
+						"234",
+						"41",
+						"182"
+					],
+					"port": "8701",
+					"path": [
+						"locationKeyword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "周边搜索",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"keyword\":\"公园\",\n    \"location\":\"30.040589,116.273543\",\n    \"distance\":\"2000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://49.234.41.182:8701/searchAround",
+					"protocol": "http",
+					"host": [
+						"49",
+						"234",
+						"41",
+						"182"
+					],
+					"port": "8701",
+					"path": [
+						"searchAround"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
