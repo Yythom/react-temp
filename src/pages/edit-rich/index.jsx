@@ -4,8 +4,9 @@ import { Editor } from "@tinymce/tinymce-react";
 import html2canvas from "html2canvas";
 import { hideLoading, showLoading, showToast } from '@/utils/Toast';
 import { apiKey, plugin } from './rich-config';
-import './index.scss';
 import { htmlToimage } from './fetch';
+import img from '@/pages/edit-rich/4.png'
+import './index.scss';
 
 const Index = () => {
     const inithtml = '<p>111</p>';
