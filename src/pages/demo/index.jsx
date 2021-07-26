@@ -39,10 +39,9 @@ const Index = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [list, setList] = useState([]);
-    const [page, setPage] = useState(1);
     const demoStore = useSelector(state => state.demoSlice, shallowEqual);
-    const [isloading, result, refresh,] = useHttp(getTestList, { params: { page } });
-
+    const [isloading, result, request,] = useHttp(getTestList, { params: { page: 1 } });
+    const [pageData, setPageData] = useState([]);
 
     // const [countdown, setTargetDate, formattedRes] = useCountdown(
     //     {
@@ -80,11 +79,11 @@ const Index = () => {
     return (
         <div className='demo_wrap autofloat' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
-
             <h1>排序</h1>
             <Button size='xs' onClick={() => setSort(!sort)}>切换排序</Button>
             <Sort sort={sort} />
             <br />
+
             {/* coustom */}
             <Button size='xs' onClick={handleClick}>测试action</Button>
             <Button size='xs' onClick={handleClickAsync}>测试异步aciton</Button>
@@ -92,6 +91,40 @@ const Index = () => {
                 console.log(demoStore);
             }}>输出</Button>
 
+            {/* 下拉刷新 */}
+            <div>
+                <h1>下拉刷新</h1>
+            </div>
+            <PullBox
+                isTopBtn
+                isWindowBox={false}
+                maxHeight={300}
+                request={{
+                    params: {
+                        page: 1,
+                    },
+                    http: getTestList
+                }}
+                onScrollBottom={(_list) => {
+                    console.log(_list, 'list');
+                    // setTimeout(() => {
+                    if (_list.page > 1) setPageData([...pageData, ..._list.list])
+                    else setPageData(_list.list)
+                    // }, 200);
+
+
+                }}
+            >
+                {/* <div style={{ height: '200px', background: '#999' }}>111</div> */}
+                {
+                    pageData?.map((e, i) => {
+                        return <Cell key={'list_pull_' + i}>{e} ---- {i}</Cell>
+                    })
+                }
+            </PullBox>
+            {
+                console.log(pageData)
+            }
             {/* Toast */}
             <div>
                 <h1>Toast</h1>
@@ -288,28 +321,7 @@ const Index = () => {
                     </div>
                 }
             ]}></Wtabs>
-            <div>
-                <h1>下拉刷新</h1>
-            </div>
-            <PullBox
-                isTopBtn
-                isWindowBox={false}
-                maxHeight={300}
-                request={{
-                    params: {
-                        page: 1,
-                    },
-                    http: getTestList
-                }}
-                onScrollBottom={(_list) => {
-                    console.log(_list);
-                }}
-            >
-                {/* <div style={{ height: '200px', background: '#999' }}>111</div> */}
-                {list.map((e, i) => {
-                    return <Cell key={'list_pull_' + i}>{e}</Cell>
-                })}
-            </PullBox>
+
         </div >
     )
 }

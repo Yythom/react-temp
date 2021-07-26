@@ -19,6 +19,7 @@ function useHttp(
     const [isloading, setIsloading] = useState(true);
 
     function resultProcess(res, cb) {
+        console.log(`%c http <-- `, 'font-weight:bold;color:#13CE66;', res);
         if (!res) return
         setResult(res);
         setIsloading(false);
@@ -31,7 +32,7 @@ function useHttp(
         resultProcess(_result, cb);
     });
 
-    const refresh = useCallback(async (params, cb) => {
+    const request = useCallback(async (params, cb) => {
         setIsloading(true)
         const _result = await service({ ...options.params, ...params });
         resultProcess(_result, cb);
@@ -44,7 +45,7 @@ function useHttp(
     return [
         isloading,
         result,
-        refresh,
+        request,
     ]
 }
 

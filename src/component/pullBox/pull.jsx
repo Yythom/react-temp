@@ -32,8 +32,6 @@ const PullBox = ({
     maxHeight,
     children
 }) => {
-
-
     const pullRef = useRef();
     const [bodyScroll, setBodyScroll] = useState(false);
     const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
@@ -42,9 +40,12 @@ const PullBox = ({
 
     useEffect(() => {
         setBodyScroll(isWindowBox);
-    }, [])
-
-
+        initing(request, (newList) => {
+            if (newList) {
+                onScrollBottom(newList)
+            }
+        })
+    }, []);
 
 
     // 模拟请求数据
@@ -54,10 +55,9 @@ const PullBox = ({
             let refreshState = REFRESH_STATE.failure
             console.log(newList, 'init--list------');
             if (newList) {
-                if (newList.list[0]) {
-                    onScrollBottom(newList)
-                    refreshState = REFRESH_STATE.success
-                }
+                setPage(1)
+                onScrollBottom(newList)
+                refreshState = REFRESH_STATE.success
             }
             setRefreshing(refreshState);
         })
