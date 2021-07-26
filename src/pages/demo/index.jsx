@@ -78,7 +78,7 @@ const Index = () => {
     const [picker, setPicker] = useState(false);
     const [sort, setSort] = useState(false)
     return (
-        <div className='demo_wrap' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
+        <div className='demo_wrap autofloat' style={{ paddingBottom: `calc(env(safe-area-inset-bottom) + 1rem)` }} >
             <Header onClick={() => history.goBack()} title='demo' right='right' />
 
             <h1>排序</h1>
