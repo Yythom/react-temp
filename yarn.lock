@@ -11933,10 +11933,10 @@
   "resolved" "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
   "version" "1.0.3"
 
-"tinymce@^5.5.1":
-  "integrity" "sha512-1zGXdZplWQafstlC7sri0ttCgMagsiXDc9N3I8JNrPOsWAeTfq4AAJWZoxsQBYn8gYcuPu/WzMKG5SoJjxI1VA=="
-  "resolved" "https://registry.npmjs.org/tinymce/-/tinymce-5.8.1.tgz"
-  "version" "5.8.1"
+"tinymce@^5.5.1", "tinymce@^5.8.2":
+  "integrity" "sha512-qfWThBrSzbj4DoUk+lgGeDoP2GzLDSWrfvVUxf40HZhTzsG15X2nZ4N49IFqwaVgRl5AyFDtuWiEH/lCmiAcRA=="
+  "resolved" "https://registry.npmjs.org/tinymce/-/tinymce-5.8.2.tgz"
+  "version" "5.8.2"
 
 "tmpl@1.0.x":
   "integrity" "sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE="

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Editor } from "@tinymce/tinymce-react";
 import html2canvas from "html2canvas";
+import { Editor } from "@tinymce/tinymce-react";
 import { hideLoading, showLoading, showToast } from '@/utils/Toast';
 import { apiKey, plugin } from './rich-config';
 import { htmlToimage } from './fetch';
