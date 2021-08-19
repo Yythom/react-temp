@@ -20,7 +20,7 @@ function request(config) {
         timeout,
         headers: {
             'Content-Type': 'application/json',
-            'token': localStorage.getItem('token') || '',
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXNzYWdlIjp7InNob3BfYWNjb3VudF9pZCI6IjEiLCJ0b2tlbl9mbGFnIjoiUHpQaFkzeHlCeDdYb0lTayJ9LCJleHAiOjE2MzE4ODg5OTF9.wwHqvuAOiTcH8Mkm67ax3WlfmH1Mucg9Fdouybfmne0',
         }
     })
 
@@ -49,7 +49,7 @@ function request(config) {
                 showToast.message(res.msg, 'error')
                 resolve(false)
             } else {
-                resolve(res.result)
+                resolve(res.result || res.data)
             }
 
         }).catch(err => {
