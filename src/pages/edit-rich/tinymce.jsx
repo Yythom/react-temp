@@ -39,26 +39,31 @@ const Index = () => {
 
     const [init, setInit] = useState(false)
     const replaceStr = async (__html, ischange) => {
-        var _inithtml = __html;
-        console.log(_inithtml);
-        //匹配图片（g表示匹配所有结果i表示区分大小写）
         var imgReg = /<img.*?(?:>|\/>)/gi;
-        let str = ''
+        let str = __html
         //匹配src属性
         var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
         var arr = __html.match(imgReg) || [];
         for (var i = 0; i < arr.length; i++) {
-            var src = arr[i].match(srcReg);
+            var src = arr[i].match(srcReg) || [];
             //获取图片地址
+            for (let index = 0; index < src.length; index++) {
+                if (src[index][1]) {
+                    let _src = src[index][1]
+                    // console.log(_src, 'src[index]');
+                }
+            }
+
             if (src[1]) {
                 let _src = src[1];
-                console.log(src[1], 'src[1]src[1]src[1]');
                 if (_src.indexOf('data:image') == -1) {
                     const res = await axios.post('http://0.0.0.0:8701/osspost', {
                         url: _src
                     })
+
                     if (res?.data) {
-                        str = _inithtml.replace(_src, 'res.data');
+                        console.log(src, i, 'src');
+                        str = str.replace(_src, 'res.data');
                     }
                 }
             }
@@ -71,7 +76,7 @@ const Index = () => {
         if (init) {
             setHtmlstr(str);
         } else {
-            setInitHtml(_inithtml);
+            setInitHtml(__html);
             setHtmlstr(str);
             setInit(true)
         }
