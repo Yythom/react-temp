@@ -62,8 +62,8 @@ const Index = () => {
                     })
 
                     if (res?.data) {
-                        console.log(src, i, 'src');
-                        str = str.replace(_src, 'res.data');
+                        // console.log(src, i, 'src');
+                        str = str.replace(_src, res.data);
                     }
                 }
             }
@@ -85,7 +85,7 @@ const Index = () => {
     }
 
     useEffect(() => {
-        replaceStr('<p>222</p><p><img src="https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg" /></p>');
+        // replaceStr('<p>222</p><p><img src="https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg" /></p>');
         // showLoading('loading');
     }, []);
 
@@ -102,28 +102,28 @@ const Index = () => {
                             hideLoading();
                             setEditload(true);
                         },
-                        images_upload_handler: async (blobInfo, success, failure) => {
-                            // console.log(11111, blobInfo, URL.createObjectURL(blobInfo.blob()))
-                            if (blobInfo.blob()) {
-                                // blobToBase64(blobInfo.blob()).then(res => {
-                                //     console.log(res);
-                                // })
-                                // getUploadApi({}).then(data=>{
+                        // images_upload_handler: async (blobInfo, success, failure) => {
+                        //     // console.log(11111, blobInfo, URL.createObjectURL(blobInfo.blob()))
+                        //     if (blobInfo.blob()) {
+                        //         // blobToBase64(blobInfo.blob()).then(res => {
+                        //         //     console.log(res);
+                        //         // })
+                        //         // getUploadApi({}).then(data=>{
 
-                                // })
-                                let file = blobInfo.blob();
+                        //         // })
+                        //         let file = blobInfo.blob();
 
-                                axios.post('http://0.0.0.0:8701/osspost', {
-                                    url: 'https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg'
-                                }).then(res => {
-                                    // console.log(res.data);
-                                    success('https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg');
-                                })
-                            }
-                        },
+                        //         // axios.post('http://0.0.0.0:8701/osspost', {
+                        //         //     url: 'https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg'
+                        //         // }).then(res => {
+                        //         // console.log(res.data);
+                        //         success('https://ryq-mall-ml.oss-cn-chengdu.aliyuncs.com/ryq/desc/e07d6a574be34.jpg');
+                        //         // })
+                        //     }
+                        // },
                         save_onsavecallback: async (e) => {
                             let html = e.getContent();
-                            // console.log('保存', html);
+                            console.log('保存', html);
                             // console.log(htmlstr);
                             if (html === "") {
                                 showToast.message("内容填写不完整")
@@ -134,7 +134,7 @@ const Index = () => {
                             // api
                         },
                         language: 'zh_CN',
-                        content_style: "img {max-width:100%;} *{text-align: center;} body{margin:0}",
+                        content_style: "img {max-width:100%;height:auto !important} body{margin:0}",
                         height: '100%',
                         width: 600,
                         branding: false,
@@ -152,8 +152,9 @@ const Index = () => {
                     }}
 
                     onEditorChange={(val) => {
-                        setOrignHtml(val)
-                        replaceStr(val);
+                        // setOrignHtml(val)
+                        setHtmlstr(val)
+                        // replaceStr(val);
                     }}
                 />
             </div>
