@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import html2canvas from "html2canvas";
 import { Editor } from "@tinymce/tinymce-react";
 import { hideLoading, showLoading, showToast } from '@/utils/Toast';
 import { apiKey, plugin } from './rich-config';
@@ -125,12 +124,12 @@ const Index = () => {
                             let html = e.getContent();
                             console.log('保存', html);
                             // console.log(htmlstr);
-                            if (html === "") {
-                                showToast.message("内容填写不完整")
-                                return;
-                            }
-                            let file = await htmlToimage('article-preview')
-                            console.log(file);
+                            // if (html === "") {
+                            //     showToast.message("内容填写不完整")
+                            //     return;
+                            // }
+                            // let file = await htmlToimage('article-preview')
+                            // console.log(file);
                             // api
                         },
                         language: 'zh_CN',
