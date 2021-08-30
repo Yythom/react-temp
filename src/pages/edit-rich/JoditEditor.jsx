@@ -3,19 +3,22 @@ import JoditEditor from "jodit-react";
 import './index.scss'
 const Example = ({ }) => {
     const editor = useRef(null)
-    const [content, setContent] = useState('')
+    const [content, setContent] = useState(`
+    <p style="text-align: left;" wx:nodeid="160">122<img src="http://49.234.41.182:8701/file?url=A0XgeXmgphXw43577cf1808a1a59b1704612cebc07e6.jpg" width="80%" data-custom="id=abcd&amp;role=god" wx:nodeid="179"></p><p style="text-align: left;" wx:nodeid="183"><br wx:nodeid="184"></p>
+    `)
 
     const config = {
         readonly: false // all options from https://xdsoft.net/jodit/doc/
     }
 
     return (
-        <div>
+        <div className='jod'>
             <JoditEditor
                 ref={editor}
                 value={content}
                 config={{
                     showTooltipDelay: 200, // 工具栏提示延迟
+
                     events: {
                         getIcon: (name, control, clearName) => {
                             // var code = name;

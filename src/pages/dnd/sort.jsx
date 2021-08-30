@@ -3,16 +3,18 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Button } from 'zarm';
 
-const SortableItem = SortableElement(({ value }) => {
+const SortableItem = SortableElement(({ list, value, i, setlist }) => {
     return (
         <div className='item-content move-square'>
             <div>
-                {value}
+                {value || null}
             </div>
             <Button className='del'
                 onClick={(e) => {
                     e.stopPropagation();
-                    console.log();
+                    const new_list = [...list];
+                    new_list.splice(i, 1);
+                    setlist(new_list);
                 }}
             >
                 删除
@@ -21,7 +23,7 @@ const SortableItem = SortableElement(({ value }) => {
     )
 });
 // hoc
-const SortableList = SortableContainer(({ items, sort }) => {
+const SortableList = SortableContainer(({ items, sort, setlist }) => {
     return (
         <ul style={
             sort
@@ -30,10 +32,13 @@ const SortableList = SortableContainer(({ items, sort }) => {
         }
         >
             {
-                items.map((value, index) => (
+                items.map((value, i) => (
                     <SortableItem
+                        setlist={setlist}
+                        list={items}
                         key={`item-${value}`}
-                        index={index}
+                        index={i}
+                        i={i}
                         value={value}
                         collection="newGifs"
                     />
@@ -44,9 +49,8 @@ const SortableList = SortableContainer(({ items, sort }) => {
 });
 
 
-function SortableComponent({ sort }) {
-    const [list, setlist] = useState(['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8'])
-
+function SortableComponent({ sort, list, setlist }) {
+    if (!list) return
     /**
      *  collection: "newGifs" 自定义在 SortableItem上的属性
      *  isKeySorting: undefined
@@ -59,7 +63,7 @@ function SortableComponent({ sort }) {
         console.log(newarr, collection);
         setlist(newarr)
     };
-    return <SortableList distance={10} sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
+    return <SortableList distance={10} setlist={setlist} sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
 }
 
 

@@ -2,7 +2,7 @@ import { Form, Upload, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import ImgCrop from 'antd-img-crop';
 
 function UploadFile() {
 
@@ -30,7 +30,8 @@ function UploadFile() {
 
     const props = {
         name: 'file',
-        listType: "picture",
+        // listType: "picture",
+        listType: "picture-card",
         maxCount: 1,
         data: OSSData,
         action: 'http://49.234.41.182:8701/upload',
@@ -44,9 +45,12 @@ function UploadFile() {
 
     return (
         <div>
-            <Upload {...props} beforeUpload={be}>
-                <Button icon={<UploadOutlined />}>Click to Upload</Button>
-            </Upload>
+            <ImgCrop rotate>
+                <Upload {...props} beforeUpload={be}>
+                    +
+                    {/* <Button icon={<UploadOutlined />}>Click to Upload</Button> */}
+                </Upload>
+            </ImgCrop>
         </div>
     )
 }

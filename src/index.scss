@@ -86,7 +86,18 @@ ul {
   margin: 0;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
 .fd {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fdc {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,17 +110,12 @@ ul {
   justify-content: center;
 }
 
-.fa {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .fb {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 
 .ab-center {
   position: absolute;
