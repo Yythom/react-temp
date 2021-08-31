@@ -2,35 +2,59 @@ import { useState } from 'react';
 import Sort from './sort'
 import './index.scss'
 import { useEffect } from 'react';
-import { Button, Upload } from 'antd';
+import { Button, Upload, Input } from 'antd';
 import UploadFile from './up';
 import { useDrop, useDrag } from 'ahooks';
+import { Fragment } from 'react';
+
+function ProInput(props) {
+
+    return <Fragment>
+        <Input {...props}></Input>
+    </Fragment>
+}
+
 function Dnd() {
     const [sort, setSort] = useState(null);
     const [draggingIndex, setDraggingIndex] = useState(NaN);
     const [list, setlist] = useState(['Item 1',]);
     const [box, setBox] = useState([
         {
-            text: 'box 1',
-            props: {
-                style: {
-                    fontSize: '20px',
-                }
-            },
+            text: `文本元素`,
+            html: <text style={{
+                fontSize: '20px',
+                color: 'red'
+            }} >'文本元素'</text>,
         },
         {
-            text: 'box 2',
-            props: {
-                style: {
-                    color: '#fff',
+            text: '按钮',
+            html: <Button
+                style={
+                    { color: '#000', }
                 }
-            },
+                onClick={() => {
+                    console.log(121231);
+                }
+                }>
+                按钮
+            </Button >,
         },
         {
-            text: '有点击事件的 4',
+            text: '输入框',
+            html:
+                <ProInput
+                    placeholder='2131'
+                    onClick={() => {
+                        console.log(121231);
+                    }}
+                />,
+        },
+        {
+            text: '上传事件',
+            html: <UploadFile />,
             props: {
                 onClick: () => {
-                    console.log(121231);
+
                 }
             },
         },
@@ -55,7 +79,12 @@ function Dnd() {
         //     console.log(uri, e);
         // },
         onDom: (content, e) => {
-            setlist([...list, <div {...box[draggingIndex].props}>{box[draggingIndex].text}</div>])
+            console.log(box[draggingIndex]);
+            setlist([...list,
+            // <div {...box[draggingIndex].props}>
+            box[draggingIndex].html
+                // </div>
+            ])
             // console.log(content);
         },
     });
@@ -70,13 +99,9 @@ function Dnd() {
 
                 {isHovering ? '松开确认' : '请拖入'}
             </div>
-            <div className='simulator'>
+            <div className='simulator'  >
                 {/* <UploadFile /> */}
                 <div>
-                    <div style={{ border: '1px dashed #e8e8e8', padding: 16, textAlign: 'center' }} {...props}>
-
-                    </div>
-
                     <div style={{ display: 'flex', marginTop: 8 }}>
                         {box.map((e, i) => (
                             <div
@@ -88,9 +113,8 @@ function Dnd() {
                                     textAlign: 'center',
                                     marginRight: 16,
                                 }}
-                            >
-                                {e.text}
-                            </div>
+                                dangerouslySetInnerHTML={{ __html: e.text }}
+                            />
                         ))}
                     </div>
                 </div>

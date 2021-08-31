@@ -36,7 +36,7 @@ const SortableList = SortableContainer(({ items, sort, setlist }) => {
                     <SortableItem
                         setlist={setlist}
                         list={items}
-                        key={`item-${value}`}
+                        key={`item-${i}`}
                         index={i}
                         i={i}
                         value={value}
