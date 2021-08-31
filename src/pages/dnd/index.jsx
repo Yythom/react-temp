@@ -6,6 +6,7 @@ import { Button, Upload, Input } from 'antd';
 import UploadFile from './up';
 import { useDrop, useDrag } from 'ahooks';
 import { Fragment } from 'react';
+import pro from './component';
 
 function ProInput(props) {
 
@@ -20,43 +21,24 @@ function Dnd() {
     const [list, setlist] = useState(['Item 1',]);
     const [box, setBox] = useState([
         {
-            text: `文本元素`,
-            html: <text style={{
-                fontSize: '20px',
-                color: 'red'
-            }} >'文本元素'</text>,
+            "text": '按钮',
+            "html": "_pro.ProButton({onClick:()=>{console.log('点击了按钮')}})",
+            "props": {
+                "style": {
+                    "color": 'red',
+                    "fontSize": '34px'
+                },
+                "value": 222
+            }
         },
         {
-            text: '按钮',
-            html: <Button
-                style={
-                    { color: '#000', }
-                }
-                onClick={() => {
-                    console.log(121231);
-                }
-                }>
-                按钮
-            </Button >,
+            "text": '输入框',
+            "html": "_pro.ProInput({ placeholder: '2131' })"
+            ,
         },
         {
-            text: '输入框',
-            html:
-                <ProInput
-                    placeholder='2131'
-                    onClick={() => {
-                        console.log(121231);
-                    }}
-                />,
-        },
-        {
-            text: '上传事件',
-            html: <UploadFile />,
-            props: {
-                onClick: () => {
-
-                }
-            },
+            "text": '上传事件',
+            "html": "_pro.Upload()",
         },
     ]);
 
@@ -68,6 +50,24 @@ function Dnd() {
             setDraggingIndex(NaN);
         },
     });
+    function insertStr(soure, start, newStr) {
+        return soure.slice(0, start) + newStr + soure.slice(start);
+    }
+
+    const replaceStr = (str, index, char) => {
+        const strAry = str.split('');
+        strAry[index] = char;
+        return strAry.join('');
+    }
+    function pro_render({ props, html }, _pro = pro) {
+        var _pro = pro;
+        let _html = html;
+        if (props) {
+            let propsTOjson = JSON.stringify(props);
+            _html = insertStr(html, html.length - 2, `,pro_data:${propsTOjson}`)
+        }
+        return eval(_html)
+    }
     const [props, { isHovering }] = useDrop({
         // onText: (text, e) => {
         //     console.log(text, e);
@@ -80,9 +80,10 @@ function Dnd() {
         // },
         onDom: (content, e) => {
             console.log(box[draggingIndex]);
+
             setlist([...list,
             // <div {...box[draggingIndex].props}>
-            box[draggingIndex].html
+            pro_render(box[draggingIndex]),
                 // </div>
             ])
             // console.log(content);
@@ -102,19 +103,19 @@ function Dnd() {
             <div className='simulator'  >
                 {/* <UploadFile /> */}
                 <div>
-                    <div style={{ display: 'flex', marginTop: 8 }}>
+                    <div >
                         {box.map((e, i) => (
                             <div
                                 {...getDragProps(`useDrop:${i}`)}
                                 style={{
                                     border: '1px solid #e8e8e8',
                                     padding: 16,
-                                    width: 80,
                                     textAlign: 'center',
                                     marginRight: 16,
                                 }}
-                                dangerouslySetInnerHTML={{ __html: e.text }}
-                            />
+                            >
+                                {e.html}
+                            </div>
                         ))}
                     </div>
                 </div>
