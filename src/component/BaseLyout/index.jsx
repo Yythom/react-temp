@@ -6,7 +6,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 //路由
 import router from '../../router/router';
 import { useEffect } from 'react';
-import Bar from '@/pages/custom-tab-bar/index'
+// import Bar from '@/pages/custom-tab-bar/index'
 
 function _Layout(props) {
 

@@ -1,46 +1,51 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import Sort from './sort'
 import './index.scss'
 import { useEffect } from 'react';
-import { Button, Upload, Input } from 'antd';
-import UploadFile from './up';
+import { Input } from 'antd';
+// import UploadFile from './up';
 import { useDrop, useDrag } from 'ahooks';
 import { Fragment } from 'react';
 import pro from './component';
-
-function ProInput(props) {
-
-    return <Fragment>
-        <Input {...props}></Input>
-    </Fragment>
-}
+import { Slider } from 'zarm';
+import { showToast } from '@/utils/Toast';
 
 function Dnd() {
     const [sort, setSort] = useState(null);
     const [draggingIndex, setDraggingIndex] = useState(NaN);
     const [list, setlist] = useState(['Item 1',]);
-    const [box, setBox] = useState([
-        {
-            "text": '按钮',
-            "html": "_pro.ProButton({onClick:()=>{console.log('点击了按钮')}})",
-            "props": {
-                "style": {
-                    "color": 'red',
-                    "fontSize": '34px'
+    const [box, setBox] = useState([]);
+
+    useEffect(() => {
+        if (localStorage.getItem('jsx')) {
+            console.log('本地读取配置中');
+            setBox(JSON.parse(localStorage.getItem('jsx')));
+        } else {
+            setBox([
+                {
+                    "text": '按钮',
+                    "html": "_pro.ProButton({onClick:()=>{console.log('点击了按钮')}})",
+                    "props": {
+                        "style": {
+                            "color": 'red',
+                            "fontSize": '34px'
+                        },
+                        "value": 222,
+                    },
                 },
-                "value": 222
-            }
-        },
-        {
-            "text": '输入框',
-            "html": "_pro.ProInput({ placeholder: '2131' })"
-            ,
-        },
-        {
-            "text": '上传事件',
-            "html": "_pro.Upload()",
-        },
-    ]);
+                {
+                    "text": '输入框',
+                    "html": "_pro.ProInput({ placeholder: '2131' })"
+                    ,
+                },
+                {
+                    "text": '上传事件',
+                    "html": "_pro.Upload()",
+                },
+            ])
+        }
+    }, [])
 
     const getDragProps = useDrag({
         onDragStart: (index) => {
@@ -90,14 +95,43 @@ function Dnd() {
         },
     });
 
-    useEffect(() => {
-    }, [])
+    const [changing_element, setchanging] = useState({
+        ele: null,
+        index: '',
+    });
+
+    /**
+     * 
+     * @param {*} attr   props--属性名
+     * @param {*} value  值
+     * @param {*} key    属性对象下的key
+     */
+    function changeProps(attr, value, key) {
+        const { ele, index } = changing_element
+        if (!ele) return showToast.message('请选择修改元素')
+        const copy = JSON.parse(JSON.stringify(ele));
+        if (!copy.props) copy.props = {};
+
+        if (typeof copy.props[attr] === 'object' && key) {
+            const newProps = { ...copy.props };
+            newProps[attr][key] = value;
+            copy.props = newProps;
+        } else {
+            copy.props[attr] = value;
+        }
+
+        const newList = JSON.parse(JSON.stringify(box));
+        newList[index].props = copy.props;
+        setBox(newList);
+        console.log(newList);
+        localStorage.setItem('jsx', JSON.stringify(newList))
+
+    }
 
     return (
         <div className='dnd_wrap flex'>
             <div className='edit_mobile' {...props}>
                 <Sort sort={sort} list={list} setlist={setlist} />
-
                 {isHovering ? '松开确认' : '请拖入'}
             </div>
             <div className='simulator'  >
@@ -106,18 +140,36 @@ function Dnd() {
                     <div >
                         {box.map((e, i) => (
                             <div
-                                {...getDragProps(`useDrop:${i}`)}
-                                style={{
-                                    border: '1px solid #e8e8e8',
-                                    padding: 16,
-                                    textAlign: 'center',
-                                    marginRight: 16,
+                                className={`item ${e == changing_element?.ele && 'act-item'}`}
+                                onClick={() => {
+                                    setchanging(
+                                        {
+                                            ele: e,
+                                            index: i,
+                                        }
+                                    )
                                 }}
+                                {...getDragProps(`useDrop:${i}`)}
                             >
-                                {e.html}
+                                {pro_render({ html: e.html, props: e.props })}
                             </div>
                         ))}
                     </div>
+                </div>
+            </div>
+            <div className='simulator'  >
+                {/* <UploadFile /> */}
+                <div>
+                    <Slider onChange={(e) => {
+                        changeProps('style', `${e}px`, 'padding',)
+
+                    }} ></Slider>
+                </div>
+                <div>
+                    <Input type="text"
+                        onBlur={(e) => {
+                            changeProps('style', `#${e.target.value}`, 'color',)
+                        }} />
                 </div>
             </div>
 
