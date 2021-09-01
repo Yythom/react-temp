@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import ImgCrop from 'antd-img-crop';
 
-function UploadFile() {
+function UploadFile({ url }) {
 
     const [OSSData, setOSSData] = useState(null)
 
@@ -34,7 +34,7 @@ function UploadFile() {
         listType: "picture-card",
         maxCount: 1,
         data: OSSData,
-        action: 'http://49.234.41.182:8701/upload',
+        action: url || 'http://49.234.41.182:8701/upload',
     };
 
     const be = async () => {

@@ -1,34 +1,34 @@
 
-import { Button } from 'antd';
 import { Fragment } from 'react';
-import { Input } from 'zarm';
+import { Button, Input } from 'zarm';
 import UploadFile from './up';
 
-function ProInput(props) {
-    const pro_data = props?.pro_data || {}
+function ProInput({ pro_props }) {
     return <Fragment>
-        <Input  {...props} {...pro_data}>
+        <Input   {...pro_props}>
 
         </Input>
     </Fragment >
 }
 
-function ProButton(props) {
-    const pro_data = props?.pro_data || {}
-    console.log(pro_data, 'pro_data');
-    return <Button {...props} {...pro_data}>
-        按钮
-    </Button >
+function ProButton({ pro_props }) {
+
+    return <button className='fc' {...pro_props}>
+        {pro_props?.content || '按钮'}
+    </button >
 }
 
-function Upload(props) {
-    const pro_data = props?.pro_data || {}
-    return <UploadFile />
+function Upload({ pro_props }) {
+    const styles = pro_props?.style ? { ...pro_props?.style } : {};
+
+    return <div  {...pro_props} style={{ width: '100%', height: '100%', ...styles, }}>
+        <UploadFile  {...pro_props} />
+    </div >
 }
 
-const pro = {
+const ProComponent = {
     ProInput,
     ProButton,
     Upload,
 }
-export default pro;
+export default ProComponent;

@@ -1,0 +1,21 @@
+{
+    "list": [
+        {
+            "html": "_pro.ProButton({a:1})",
+            "props": {
+                "content": "这是内容",
+                "style": {
+                    "color": "red",
+                    "fontSize": "34px"
+                },
+                "value": 222
+            }
+        },
+        {
+            "html": "_pro.ProInput({})"
+        },
+        {
+            "html": "_pro.Upload({})"
+        }
+    ]
+}

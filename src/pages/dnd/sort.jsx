@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Button } from 'zarm';
+import { pro_render } from './common';
 
 const SortableItem = SortableElement(({ list, value, i, setlist }) => {
     return (
         <div className='item-content move-square'>
-            <div>
-                {value || null}
+            <div className='fc'>
+                {pro_render({ html: value.html, props: value.props })}
             </div>
             <Button className='del'
                 onClick={(e) => {
@@ -60,7 +61,7 @@ function SortableComponent({ sort, list, setlist }) {
      */
     const onSortEnd = ({ oldIndex, newIndex, collection }) => { // SortableItem
         let newarr = arrayMove(list, oldIndex, newIndex);
-        console.log(newarr, collection);
+        // console.log(newarr, collection);
         setlist(newarr)
     };
     return <SortableList distance={10} setlist={setlist} sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
