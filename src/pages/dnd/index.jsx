@@ -107,7 +107,9 @@ function Dnd() {
 
                 <div>
                     文字颜色:
-                    <Input type="text"
+                    <Input
+                        type="text"
+                        placeholder='#333333'
                         onBlur={(e) => {
                             changeProps(
                                 changing_element,
@@ -122,6 +124,7 @@ function Dnd() {
                 <div>
                     背景颜色:
                     <Input type="text"
+                        placeholder='#333333'
                         onBlur={(e) => {
                             changeProps(
                                 changing_element,

@@ -4,14 +4,16 @@ import { Button, Input } from 'zarm';
 import UploadFile from './up';
 
 function ProInput({ pro_props }) {
+    const styles = pro_props?.style ? { ...pro_props?.style } : {};
     return <Fragment>
-        <Input   {...pro_props}>
+        <Input    {...pro_props}>
 
         </Input>
     </Fragment >
 }
 
 function ProButton({ pro_props }) {
+    const styles = pro_props?.style ? { ...pro_props?.style } : {};
 
     return <button className='fc' {...pro_props}>
         {pro_props?.content || '按钮'}

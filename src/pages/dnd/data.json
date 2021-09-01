@@ -4,6 +4,7 @@
             "html": "_pro.ProButton({a:1})",
             "props": {
                 "content": "这是内容",
+                "pleaceholder": "12312",
                 "style": {
                     "color": "red",
                     "fontSize": "34px"
@@ -12,7 +13,10 @@
             }
         },
         {
-            "html": "_pro.ProInput({})"
+            "html": "_pro.ProInput({})",
+            "props": {
+                "placeholder": "请输入"
+            }
         },
         {
             "html": "_pro.Upload({})"
