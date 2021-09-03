@@ -2,7 +2,6 @@
     "list": [
         {
             "type": "ProSwiper",
-            "html": "_pro.ProSwiper()",
             "props": {
                 "list": [],
                 "style": {
@@ -12,7 +11,6 @@
         },
         {
             "type": "ProButton",
-            "html": "_pro.ProButton()",
             "props": {
                 "content": "这是内容",
                 "pleaceholder": "12312",
@@ -25,14 +23,12 @@
         },
         {
             "type": "ProInput",
-            "html": "_pro.ProInput()",
             "props": {
                 "placeholder": "请输入"
             }
         },
         {
-            "type": "ProUpload",
-            "html": "_pro.ProUpload()"
+            "type": "ProUpload"
         }
     ]
 }

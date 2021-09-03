@@ -178,7 +178,7 @@ function Dnd() {
                     请求地址:
                     <Input
                         type="text"
-                        placeholder='https://'
+                        placeholder='https:// 默认自动填写'
                         onBlur={(e) => {
                             changeProps(
                                 changing_element,
@@ -191,7 +191,7 @@ function Dnd() {
                         }} />
                     <textarea
                         type="text"
-                        placeholder='json请求参数'
+                        placeholder='json请求参数 默认自动填写'
                         onBlur={(e) => {
                             changeProps(
                                 changing_element,

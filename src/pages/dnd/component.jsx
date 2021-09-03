@@ -6,6 +6,7 @@ import Swiper from '../../component/swiper/MySwiper';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { hideLoading, showLoading } from '@/utils/Toast';
+import usePaging from './usePaging';
 
 const View = (props) => {
     return <div {...props}>
@@ -14,18 +15,16 @@ const View = (props) => {
 }
 
 function ProSwiper({ pro_props }) {
-
+    const [init, setInit] = useState(true);
     useEffect(() => {
-        console.log(pro_props.http, 'http');
         if (pro_props?.http?.params && pro_props?.http?.ip) {
-            showLoading()
-            axios.post(pro_props?.http?.ip, JSON.parse(pro_props?.http?.params)).then(res => {
-                console.log(res);
-                hideLoading();
-            })
+            setInit(!init);
         }
     }, [pro_props?.http])
-
+    const [result, no_more, list] = usePaging(pro_props?.http?.params, pro_props?.http?.ip, init, (res) => {
+        // 请求成功回调
+        console.log(res);
+    })
     const styles = pro_props?.style ? { ...pro_props?.style } : {};
 
     return <View  {...pro_props}>
