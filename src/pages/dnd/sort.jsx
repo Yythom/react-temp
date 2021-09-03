@@ -8,7 +8,8 @@ const SortableItem = SortableElement(({ list, value, i, setlist }) => {
     return (
         <div className='item-content move-square'>
             <div className='fc'>
-                {pro_render({ html: value.html, props: value.props })}
+                {pro_render({ type: value.type, props: value.props })}
+                {/* {pro_render({ html: value.html, props: value.props })} */}
             </div>
             <Button className='del'
                 onClick={(e) => {

@@ -46,6 +46,21 @@
         }
     }
 
+    .config {
+        box-sizing: border-box;
+        padding: 10px;
+
+        div {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input {
+            width: 75%;
+        }
+    }
+
     .move-square {
         border: none;
     }
