@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Button } from 'zarm';
-import { pro_render } from './common';
+import { pro_render } from './utils/common';
 
 const SortableItem = SortableElement(({ list, value, i, setlist }) => {
     return (

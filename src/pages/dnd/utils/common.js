@@ -1,6 +1,6 @@
 import { showToast } from '@/utils/Toast';
 import react from 'react'
-import ProComponent from './component';
+import ProComponent from '../component/component';
 import { insertStr } from './utils';
 
 

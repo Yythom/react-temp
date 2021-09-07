@@ -1,17 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import Sort from './sort'
 import './index.scss'
-import { useEffect } from 'react';
 import { Input } from 'antd';
 // import UploadFile from './up';
 import { useDrop, useDrag } from 'ahooks';
-import { Fragment } from 'react';
-import procomponent from './component';
 import { Slider } from 'zarm';
 import { showToast } from '@/utils/Toast';
-import { changeContent, changeProps, pro_render } from './common';
-import data from './data.json'
+import { changeProps, pro_render } from './utils/common';
+import data from './utils/data.json'
+import ProConfig from './component/config';
 function Dnd() {
     const [sort, setSort] = useState(null);
     const [draggingIndex, setDraggingIndex] = useState(NaN);
@@ -52,12 +50,28 @@ function Dnd() {
         },
     });
 
+
+    /** */
+    // 当前选中的元素 配置
     const [changing_element, setchanging] = useState({
         ele: null,
         index: '',
+        config: null,
     });
 
-
+    const _changeProps = (props, callback = Function.prototype) => {
+        console.log();
+        changeProps(
+            changing_element,
+            box,
+            { attr: props?.attr, value: props?.value, key: props?.key },
+            (newList) => {
+                setBox(newList);
+                callback();
+            }
+        )
+    }
+    /** */
 
     return (
         <div className='dnd_wrap fb' style={{ justifyContent: 'space-around' }}>
@@ -73,24 +87,27 @@ function Dnd() {
                             <div
                                 className={`item fc ${i === changing_element?.index && 'act-item'}`}
                                 onClick={() => {
+
                                     setchanging(
                                         {
                                             ele: e,
                                             index: i,
+                                            type: e.type,
                                         }
                                     )
                                 }}
                                 {...getDragProps(`useDrop:${i}`)}
                             >
                                 {pro_render({ type: e.type, props: e.props })}
-
-                                {/* {pro_render({ html: e.html, props: e.props })} */}
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
             <div className='simulator config'  >
+
+                {changing_element.type === 'ProInput' && <ProConfig.ProInputConfig changeProps={_changeProps} />}
+
                 {/* <UploadFile /> */}
 
                 {/* 修改配置项 */}

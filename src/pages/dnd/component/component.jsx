@@ -1,12 +1,12 @@
 
 import { Fragment, useState } from 'react';
 import { Button, Input } from 'zarm';
-import UploadFile from './up';
-import Swiper from '../../component/swiper/MySwiper';
+import UploadFile from '../up';
+import Swiper from '../../../component/swiper/MySwiper';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { hideLoading, showLoading } from '@/utils/Toast';
-import usePaging from './usePaging';
+import usePaging from '../usePaging';
 
 const View = (props) => {
     return <div {...props}>
