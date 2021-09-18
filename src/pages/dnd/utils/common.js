@@ -18,7 +18,7 @@ function pro_render({ type, props, }) {
 /**
  * 
  * @param {*} element 
- * @param {*} list 
+ * @param {*} listJson 
  * @param {*} params { attr, value ,key}
  * @param {*} callback 
  * @returns 

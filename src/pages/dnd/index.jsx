@@ -79,7 +79,7 @@ function Dnd() {
                 <Sort sort={sort} list={renderList} setlist={setRenderList} />
                 {isHovering ? '松开确认' : '请拖入'}
             </div>
-            <div className='simulator'  >
+            <div className='simulator'>
                 {/* <UploadFile /> */}
                 <div>
                     <div >
