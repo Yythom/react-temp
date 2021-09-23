@@ -45,7 +45,7 @@ function request(config) {
     return new Promise((resolve, reject) => {
         instance(config).then(res => {
             hideLoading()
-            if (res.code != '0') {
+            if (res?.code !== 0) {
                 showToast.message(res.msg, 'error')
                 resolve(false)
             } else {

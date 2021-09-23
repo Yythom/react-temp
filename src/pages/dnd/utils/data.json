@@ -13,7 +13,9 @@
             "type": "ProTypes",
             "props": {
                 "list": [],
-                "style": {}
+                "style": {
+                    "height": "80px"
+                }
             }
         }
     ]

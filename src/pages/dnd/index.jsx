@@ -104,15 +104,15 @@ function Dnd() {
                     </div>
                 </div>
             </div>
-            <div className='simulator config'  >
-
+            <div className='simulator config'>
                 {changing_element.type === 'ProInput' && <ProConfig.ProInputConfig changeProps={_changeProps} />}
+                {changing_element.type === 'ProTypes' && <ProConfig.ProTypeConfig changeProps={_changeProps} />}
 
                 {/* <UploadFile /> */}
 
                 {/* 修改配置项 */}
                 <div>
-                    内边距:
+                    {/* 内边距:
                     <Input
                         type="text"
                         placeholder='10'
@@ -125,11 +125,11 @@ function Dnd() {
                                     setBox(newList);
                                 }
                             )
-                        }} />
+                        }} /> */}
                 </div>
 
                 <div>
-                    高度:
+                    {/* 高度:
                     <Input
                         type="text"
                         placeholder='100'
@@ -142,11 +142,11 @@ function Dnd() {
                                     setBox(newList);
                                 }
                             )
-                        }} />
+                        }} /> */}
                 </div>
 
                 <div>
-                    文字颜色:
+                    {/* 文字颜色:
                     <Input
                         type="text"
                         placeholder='#333333'
@@ -159,10 +159,10 @@ function Dnd() {
                                     setBox(newList);
                                 }
                             )
-                        }} />
+                        }} /> */}
                 </div>
                 <div>
-                    背景颜色:
+                    {/* 背景颜色:
                     <Input type="text"
                         placeholder='#333333'
                         onBlur={(e) => {
@@ -174,10 +174,10 @@ function Dnd() {
                                     setBox(newList);
                                 }
                             )
-                        }} />
+                        }} /> */}
                 </div>
                 <div>
-                    文字:
+                    {/* 文字:
                     <Input type="text"
                         onBlur={(e) => {
                             changeProps(
@@ -188,7 +188,7 @@ function Dnd() {
                                     setBox(newList);
                                 }
                             )
-                        }} />
+                        }} /> */}
                 </div>
 
                 <div>

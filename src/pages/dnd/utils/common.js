@@ -1,6 +1,6 @@
 import { showToast } from '@/utils/Toast';
-import react from 'react'
 import ProComponent from '../component/component';
+// eslint-disable-next-line no-unused-vars
 import { insertStr } from './utils';
 
 

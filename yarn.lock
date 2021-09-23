@@ -1097,7 +1097,7 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-transform-typescript" "^7.12.1"
 
-"@babel/runtime-corejs3@^7.10.2", "@babel/runtime-corejs3@^7.11.2":
+"@babel/runtime-corejs3@^7.10.2":
   version "7.12.18"
   resolved "https://registry.npmjs.org/@babel/runtime-corejs3/-/runtime-corejs3-7.12.18.tgz"
   integrity sha512-ngR7yhNTjDxxe1VYmhqQqqXZWujGb6g0IoA4qeG6MxNGRnIw2Zo8ImY8HfaQ7l3T6GklWhdNfyhWk0C0iocdVA==
@@ -2952,11 +2952,6 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-
-autobind-decorator@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/autobind-decorator/-/autobind-decorator-2.4.0.tgz"
-  integrity sha512-OGYhWUO72V6DafbF8PM8rm3EPbfuyMZcJhtm5/n26IDwO18pohE4eNazLoCGhPiXOCD0gEGmrbU3849QvM8bbw==
 
 autoprefixer@^9.6.1:
   version "9.8.6"
@@ -7691,20 +7686,6 @@ jest@26.6.0:
     "@jest/core" "^26.6.0"
     import-local "^3.0.2"
     jest-cli "^26.6.0"
-
-jodit-react@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/jodit-react/-/jodit-react-1.1.1.tgz"
-  integrity sha512-Lr4THBOL/07oTJVXglMHY1xfiVys7PBGQl9eeVAcr6Ivaq2mGRfVPT1CaBsTBJUPJ2cTjXjzqU2B40d1VzSIlA==
-  dependencies:
-    jodit "^3.7.1"
-
-jodit@^3.7.1:
-  version "3.7.2"
-  resolved "https://registry.npmjs.org/jodit/-/jodit-3.7.2.tgz"
-  integrity sha512-Jn/3z3XvCgcnkZBrckaIQ/B4CLlQkrLraU94eqlP2H0zYAMJpPpyRQjutgXWLASKfquuLCykVkvIzFfz10mMEA==
-  dependencies:
-    autobind-decorator "^2.4.0"
 
 js-base64@^2.1.8:
   version "2.6.4"
@@ -12573,11 +12554,6 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-summernote@^0.8.18:
-  version "0.8.18"
-  resolved "https://registry.nlark.com/summernote/download/summernote-0.8.18.tgz"
-  integrity sha1-vlw2ixyS3ooFA5qZdhV73qeq44Y=
-
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/supports-color/download/supports-color-2.0.0.tgz?cache=0&sync_timestamp=1618560959124&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsupports-color%2Fdownload%2Fsupports-color-2.0.0.tgz"
@@ -12809,7 +12785,7 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   resolved "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
-tinymce@^5.5.1, tinymce@^5.8.2:
+tinymce@^5.5.1:
   version "5.8.2"
   resolved "https://registry.npmjs.org/tinymce/-/tinymce-5.8.2.tgz"
   integrity sha512-qfWThBrSzbj4DoUk+lgGeDoP2GzLDSWrfvVUxf40HZhTzsG15X2nZ4N49IFqwaVgRl5AyFDtuWiEH/lCmiAcRA==
@@ -12942,7 +12918,7 @@ tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.3:
   version "2.1.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.1.0.tgz"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
@@ -13324,23 +13300,6 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
-
-wangeditor-for-react@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.npmjs.org/wangeditor-for-react/-/wangeditor-for-react-1.5.2.tgz"
-  integrity sha512-MApyO22Uo1D6s2OC06jMtMdcjPm9c+9GH9PmVuqFHrGq2g0ba94Cv2oKXnmHH7nOIPDoc2mvO5YnNjYr10NVWw==
-  dependencies:
-    react "^17.0.2"
-    wangeditor "^4.7.5"
-
-wangeditor@^4.7.5, wangeditor@^4.7.7:
-  version "4.7.7"
-  resolved "https://registry.npmjs.org/wangeditor/-/wangeditor-4.7.7.tgz"
-  integrity sha512-eUpgP7i4pCYIjxjGMMcSUtkHUCkdX7BBwLZE6umseoK9hs3qIMu1tQ95FG48NJwL71JyAjt5c1gB56PzducL3Q==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@babel/runtime-corejs3" "^7.11.2"
-    tslib "^2.1.0"
 
 warning@^4.0.1, warning@^4.0.3:
   version "4.0.3"
