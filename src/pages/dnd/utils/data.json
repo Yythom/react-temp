@@ -1,0 +1,22 @@
+{
+    "list": [
+        {
+            "type": "ProSwiper",
+            "props": {
+                "list": [],
+                "style": {
+                    "height": "100px"
+                }
+            }
+        },
+        {
+            "type": "ProTypes",
+            "props": {
+                "list": [],
+                "style": {
+                    "height": "80px"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+.move-square {
+    // height: auto;
+    // line-height: 5rem;
+    // background: rgb(255, 183, 183);
+    // opacity: 1;
+    // flex-shrink: 0;
+    // text-align: center;
+    box-sizing: content-box !important;
+    padding: 16px;
+    border: 1px dashed #ccc !important;
+    // margin: 0.2rem;
+    // border: solid 1px #eee;
+    position: relative;
+
+    &:nth-child(2n) {
+        border-top: none !important;
+    }
+
+    .del {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.dnd_wrap {
+    width: 100%;
+    min-height: 100%;
+    background-color: pink;
+
+    .edit_mobile {
+        width: 375px;
+        height: 812px;
+        background-color: #fff;
+    }
+
+    .simulator {
+        width: 375px;
+        height: 812px;
+        background-color: #fff;
+
+        .item {
+            border: 1px solid #e8e8e8;
+            padding: 16px;
+            text-align: center;
+            margin: 16px;
+        }
+
+        .act-item {
+            border: 2px pink dashed;
+        }
+    }
+
+    .config {
+        box-sizing: border-box;
+        padding: 10px;
+
+        div {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input {
+            width: 75%;
+        }
+    }
+
+    .move-square {
+        border: none;
+    }
+}

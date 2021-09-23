@@ -1,0 +1,42 @@
+.types {
+    background-color: #fff;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .carousel__item__pic {
+        // word-wrap: break-word;
+        // white-space: normal;
+        display: inline-flex !important;
+        flex-wrap: wrap;
+    }
+
+    .swiper_item {
+        flex-wrap: wrap;
+    }
+
+    .typeitem {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        width: 25%;
+        border: none;
+
+        .img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            background: #00D0BF;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+    }
+
+}

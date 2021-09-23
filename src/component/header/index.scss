@@ -1,0 +1,38 @@
+.header_title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9009;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: rgb(250, 250, 250);
+
+    .left {
+        min-width: 6rem;
+        height: 80%;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+    }
+
+    .center {
+        font-weight: bold;
+        font-size: 1.6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+.header_block,
+.header_title {
+    width: 100%;
+    height: 4.4rem;
+}
