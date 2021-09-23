@@ -10,25 +10,11 @@
             }
         },
         {
-            "type": "ProButton",
+            "type": "ProTypes",
             "props": {
-                "content": "这是内容",
-                "pleaceholder": "12312",
-                "style": {
-                    "color": "red",
-                    "fontSize": "34px"
-                },
-                "value": 222
+                "list": [],
+                "style": {}
             }
-        },
-        {
-            "type": "ProInput",
-            "props": {
-                "placeholder": "请输入"
-            }
-        },
-        {
-            "type": "ProUpload"
         }
     ]
 }

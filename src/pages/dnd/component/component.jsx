@@ -33,35 +33,7 @@ function ProSwiper({ pro_props }) {
 }
 
 
-function ProInput({ pro_props }) {
-    const styles = pro_props?.style ? { ...pro_props?.style } : {};
-    return <Fragment>
-        <Input    {...pro_props}>
-
-        </Input>
-    </Fragment >
-}
-
-function ProButton({ pro_props }) {
-    const styles = pro_props?.style ? { ...pro_props?.style } : {};
-
-    return <button className='fc' {...pro_props}>
-        {pro_props?.content || '按钮'}
-    </button >
-}
-
-function ProUpload({ pro_props }) {
-    const styles = pro_props?.style ? { ...pro_props?.style } : {};
-
-    return <div  {...pro_props} style={{ width: '100%', height: '100%', ...styles, }}>
-        <UploadFile  {...pro_props} />
-    </div >
-}
-
 const ProComponent = {
-    ProInput,
-    ProButton,
-    ProUpload,
     ProSwiper,
 }
 export default ProComponent;
