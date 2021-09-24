@@ -28,7 +28,7 @@ function ProTypeConfig({ changeProps }) {
                     {(fields, { add, remove }) => (
                         <>
                             {fields.map(({ key, name, fieldKey, ...restField }) => (
-                                <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                                <div>
                                     <Form.Item
                                         {...restField}
                                         name={[name, 'name']}
@@ -45,8 +45,8 @@ function ProTypeConfig({ changeProps }) {
                                     >
                                         <Input placeholder="type" />
                                     </Form.Item>
-                                    <div onClick={() => remove(name)} >删除</div>
-                                </Space>
+                                    <div className='iconfont icon-delete' onClick={() => remove(name)} ></div>
+                                </div>
                             ))}
                             <Form.Item>
                                 <Button type="dashed" onClick={() => add()} block icon={'+'}>

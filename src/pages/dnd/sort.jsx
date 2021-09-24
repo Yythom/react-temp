@@ -62,7 +62,7 @@ function SortableComponent({ sort, list, setlist }) {
      */
     const onSortEnd = ({ oldIndex, newIndex, collection }) => { // SortableItem
         let newarr = arrayMove(list, oldIndex, newIndex);
-        // console.log(newarr, collection);
+        console.log(newarr, 'result');
         setlist(newarr)
     };
     return <SortableList distance={10} setlist={setlist} sort={sort} items={list} axis={sort ? "xy" : "y"} onSortEnd={onSortEnd} />;
